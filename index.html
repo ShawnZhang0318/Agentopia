@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e8e5dc" />
+    <meta name="description" content="Agentopia: a shared story that helps long-distance friends find a reason to reconnect." />
+    <title>Agentopia — A Shared Story</title>
+    <link rel="stylesheet" href="./storybook.css" />
+    <script src="./storybook.js" defer></script>
+  </head>
+  <body>
+    <div class="presentation">
+      <header class="topbar">
+        <a class="brand" href="#start" aria-label="Agentopia home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>agentopia<span class="brand-dot">.</span></span>
+        </a>
+        <div class="deck-label"><span class="deck-star">✳</span><span data-en="A SHARED STORY" data-zh="一个共享的故事">A SHARED STORY</span></div>
+        <div class="top-actions">
+          <a class="product-link" href="./product.html" target="_blank" rel="noreferrer">
+            <span data-en="Explore product" data-zh="探索产品">Explore product</span><span aria-hidden="true">↗</span>
+          </a>
+          <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Chinese">中</button>
+          <button class="fullscreen-button" id="fullscreen-toggle" type="button" aria-label="Toggle fullscreen" title="Toggle fullscreen">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4M13 3h4v4M17 13v4h-4M3 13v4h4"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="book-stage" id="book-stage" aria-label="Agentopia story presentation">
+        <section class="story-page active page-opening" data-page="0" aria-hidden="false" id="page-1">
+          <div class="page-inner opening-layout">
+            <div class="story-copy">
+              <div class="eyebrow"><span class="eyebrow-mark">01</span><span data-en="THE MOMENT" data-zh="那个时刻">THE MOMENT</span></div>
+              <p class="time-stamp"><span class="time-moon">◔</span><span data-en="1:07 AM · AFTER A LONG DAY" data-zh="凌晨 1:07 · 漫长的一天之后">1:07 AM · AFTER A LONG DAY</span></p>
+              <h1>
+                <span data-en="At 1 a.m.," data-zh="凌晨一点，">At 1 a.m.,</span><br />
+                <span class="headline-italic" data-en="how do you reach out?" data-zh="想联系朋友，却不知怎么开口。">how do you reach out?</span>
+              </h1>
+              <p class="lead" data-en="A paper rejection. Quiet job applications. You open the group chat, wanting to text someone—but every first message feels awkward." data-zh="论文被拒，求职迟迟没有回音。你打开好友群，想联系一个人，却觉得每句开场都很尴尬。">A paper rejection. Quiet job applications. You open the group chat, wanting to text someone—but every first message feels awkward.</p>
+              <div class="opening-question">
+                <span class="question-mark">?</span>
+                <span data-en="What if a shared story made reaching out feel easy again?" data-zh="如果一个共同的故事，能让重新联系变得轻松呢？">What if a shared story made reaching out feel easy again?</span>
+              </div>
+              <div class="page-byline"><span class="byline-rule"></span><span data-en="A story about staying close, even from far away." data-zh="一个关于异地也能保持联系的故事。">A story about staying close, even from far away.</span></div>
+            </div>
+            <div class="visual-column opening-visual">
+              <div class="night-card">
+                <div class="night-sky"><span class="moon"></span><span class="star star-one">✦</span><span class="star star-two">✧</span><span class="star star-three">·</span></div>
+                <div class="phone-window">
+                  <div class="phone-top"><span class="phone-camera"></span><span class="phone-time">1:07</span><span class="phone-signal">•••</span></div>
+                  <div class="phone-chat-head"><span class="back-arrow">‹</span><span class="group-avatar-small">✳</span><span><strong data-en="Roomies & friends" data-zh="老友小群">Roomies & friends</strong><small data-en="4 people" data-zh="4 位朋友">4 people</small></span></div>
+                  <div class="chat-empty">
+                    <span class="quiet-date" data-en="LAST MESSAGE · 3 MONTHS AGO" data-zh="最后一条消息 · 3 个月前">LAST MESSAGE · 3 MONTHS AGO</span>
+                    <div class="old-message">
+                      <span class="old-avatar">M</span>
+                      <span><strong>Mina</strong><small data-en="Happy birthday!! 🎂" data-zh="生日快乐！！🎂">Happy birthday!! 🎂</small></span>
+                    </div>
+                    <div class="typing-ghost"><span></span><span></span><span></span></div>
+                  </div>
+                  <div class="message-input"><span data-en="Message…" data-zh="发消息…">Message…</span><span class="input-smile">☺</span></div>
+                </div>
+                <div class="phone-caption"><span class="caption-dot"></span><span data-en="The group is still there." data-zh="群还在，只是不知道说什么。">The group is still there.</span></div>
+              </div>
+              <div class="floating-note note-rejection"><span class="note-icon">↘</span><span data-en="Application update" data-zh="求职进度">Application update</span><strong data-en="No news yet" data-zh="暂时没有消息">No news yet</strong></div>
+              <div class="floating-note note-paper"><span class="paper-fold">✕</span><span data-en="Research paper" data-zh="研究论文">Research paper</span><strong data-en="Rejected" data-zh="未通过">Rejected</strong></div>
+            </div>
+          </div>
+          <div class="page-edge"><span>AGENTOPIA · 2026</span><span>01</span></div>
+        </section>
+
+        <section class="story-page page-problem" data-page="1" aria-hidden="true" id="page-2" hidden>
+          <div class="page-inner problem-layout">
+            <div class="story-copy problem-copy">
+              <div class="eyebrow"><span class="eyebrow-mark">02</span><span data-en="THE DISTANCE" data-zh="距离">THE DISTANCE</span></div>
+              <h2><span data-en="It's not that we don't care." data-zh="不是不在乎，">It's not that we don't care.</span><br /><span class="headline-italic" data-en="We just don't know how to start." data-zh="只是少一个自然的开场。">We just don't know how to start.</span></h2>
+              <p class="body-copy" data-en="At around 22, friends scatter after graduation. New jobs, new cities, new routines. The group chat that used to buzz every night falls quiet." data-zh="大约 22 岁，毕业让朋友散落在不同城市。新工作、新生活、新作息，曾经每天热闹的群聊慢慢安静下来。">At around 22, friends scatter after graduation. New jobs, new cities, new routines. The group chat that used to buzz every night falls quiet.</p>
+              <p class="body-copy soft-copy" data-en="We want to stay close, but even “I've been tired lately” can feel like a burden. We need a low-pressure reason to reach out." data-zh="我们想维系关系，却连一句“最近有点累”都怕打扰对方。我们需要一个低压力的联系理由。">We want to stay close, but even “I've been tired lately” can feel like a burden. We need a low-pressure reason to reach out.</p>
+              <div class="insight-quote"><span class="quote-mark">“</span><span data-en="A shared moment can be easier to talk about than a difficult feeling." data-zh="共同经历一个小故事，有时比直接说出难受更容易。">A shared moment can be easier to talk about than a difficult feeling.</span></div>
+            </div>
+            <div class="visual-column distance-visual">
+              <div class="city-map-card">
+                <div class="map-heading"><span data-en="ONE FRIEND GROUP" data-zh="同一个好友群">ONE FRIEND GROUP</span><span class="map-count">04</span></div>
+                <div class="map-illustration">
+                  <svg class="route-map" viewBox="0 0 480 290" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M83 213 C124 147 176 195 221 121 S323 126 378 66" />
+                    <path d="M83 213 C174 253 271 244 378 66" class="route-secondary" />
+                  </svg>
+                  <div class="city city-shanghai"><span class="city-pin">S</span><strong>Shanghai</strong><small data-en="Mina · new job" data-zh="Mina · 新工作">Mina · new job</small></div>
+                  <div class="city city-hangzhou"><span class="city-pin">H</span><strong>Hangzhou</strong><small data-en="You · figuring it out" data-zh="你 · 适应新生活">You · figuring it out</small></div>
+                  <div class="city city-chengdu"><span class="city-pin">C</span><strong>Chengdu</strong><small data-en="Leo · settling in" data-zh="Leo · 刚安顿下来">Leo · settling in</small></div>
+                  <div class="map-sticker"><span>3</span><small data-en="CITIES" data-zh="座城市">CITIES</small></div>
+                </div>
+                <div class="map-foot"><span class="last-chat-icon">···</span><span data-en="Last group chat" data-zh="上次群聊">Last group chat</span><strong data-en="3 months ago" data-zh="3 个月前">3 months ago</strong></div>
+              </div>
+              <div class="distance-stamp"><span>22—28</span><small data-en="RECENT GRADS" data-zh="刚毕业的年轻人">RECENT GRADS</small></div>
+            </div>
+          </div>
+          <div class="page-edge"><span>THE PROBLEM</span><span>02</span></div>
+        </section>
+
+        <section class="story-page page-world" data-page="2" aria-hidden="true" id="page-3" hidden>
+          <div class="page-inner world-layout">
+            <div class="story-copy world-copy">
+              <div class="eyebrow"><span class="eyebrow-mark">03</span><span data-en="THE IDEA" data-zh="这个想法">THE IDEA</span></div>
+              <h2><span data-en="Your Agents share one world." data-zh="每个人的 Agent，都有一个共享世界。">Your Agents share one world.</span><br /><span class="headline-italic" data-en="Your friends bring it to life." data-zh="由朋友们共同点亮。">Your friends bring it to life.</span></h2>
+              <p class="body-copy" data-en="Each friend brings a personal Agent into a small shared world. They have personalities, plans, alliances—and the occasional office prank." data-zh="每位朋友带着自己的 Agent 进入一个小小的共享世界。它们有性格、有计划、会结盟，偶尔也会恶作剧。">Each friend brings a personal Agent into a small shared world. They have personalities, plans, alliances—and the occasional office prank.</p>
+              <div class="layers-list">
+                <div class="layer-row"><span class="layer-number">01</span><span class="layer-copy"><strong data-en="You ↔ your Agent" data-zh="你 ↔ 你的 Agent">You ↔ your Agent</strong><small data-en="A private companion with a personality" data-zh="私下聊天，拥有自己的性格">A private companion with a personality</small></span><span class="layer-arrow">↗</span></div>
+                <div class="layer-row"><span class="layer-number">02</span><span class="layer-copy"><strong data-en="Agent ↔ Agent" data-zh="Agent ↔ Agent">Agent ↔ Agent</strong><small data-en="Friends' Agents build a shared story" data-zh="朋友们的 Agent 一起创造故事">Friends' Agents build a shared story</small></span><span class="layer-arrow">↗</span></div>
+                <div class="layer-row"><span class="layer-number">03</span><span class="layer-copy"><strong data-en="People ↔ shared world" data-zh="朋友 ↔ 共享世界">People ↔ shared world</strong><small data-en="Check in, react, or change what happens" data-zh="随时查看、回应或改变剧情">Check in, react, or change what happens</small></span><span class="layer-arrow">↗</span></div>
+              </div>
+            </div>
+            <div class="visual-column world-visual">
+              <div class="office-world-card">
+                <div class="world-card-top"><span class="world-label"><i></i><span data-en="SHARED WORLD · OFFICE" data-zh="共享世界 · 办公室">SHARED WORLD · OFFICE</span></span><span class="world-options">···</span></div>
+                <div class="office-illustration">
+                  <div class="office-sun"></div><div class="office-window"></div>
+                  <div class="office-shelf"><span></span><span></span><span></span></div>
+                  <div class="office-desk desk-one"></div><div class="office-desk desk-two"></div>
+                  <div class="office-plant">✳</div>
+                  <div class="tiny-agent tiny-agent-a"><span class="tiny-face face-coral">A</span><small>AliceBot</small></div>
+                  <div class="tiny-agent tiny-agent-b"><span class="tiny-face face-sage">B</span><small>BobBot</small></div>
+                  <div class="tiny-agent tiny-agent-c"><span class="tiny-face face-lilac">C</span><small>CharlieBot</small></div>
+                  <div class="alliance-note"><span>✦</span><span data-en="secret lunch alliance" data-zh="秘密午休联盟">secret lunch alliance</span></div>
+                </div>
+                <div class="world-card-bottom"><span class="world-avatars"><i>A</i><i>B</i><i>C</i><i>D</i></span><span data-en="4 friends · 1 little world" data-zh="4 位朋友 · 1 个小世界">4 friends · 1 little world</span><span class="world-live"><i></i><span data-en="LIVE" data-zh="运行中">LIVE</span></span></div>
+              </div>
+              <div class="world-note"><span class="note-spark">✳</span><span data-en="No babysitting required. Drop in when you like." data-zh="不用守着它；想看时再回来。">No babysitting required. Drop in when you like.</span></div>
+            </div>
+          </div>
+          <div class="page-edge"><span>THE SHARED WORLD</span><span>03</span></div>
+        </section>
+
+        <section class="story-page page-report" data-page="3" aria-hidden="true" id="page-4" hidden>
+          <div class="page-inner report-layout">
+            <div class="report-intro">
+              <div class="eyebrow"><span class="eyebrow-mark">04</span><span data-en="THE DAILY REPORT" data-zh="每日日报">THE DAILY REPORT</span></div>
+              <h2><span data-en="A tiny office." data-zh="小小办公室，">A tiny office.</span><br /><span class="headline-italic" data-en="A very shareable story." data-zh="一个值得分享的故事。">A very shareable story.</span></h2>
+              <p class="body-copy" data-en="You don't have to watch the world all day. A playful Daily Report brings you the moments worth talking about." data-zh="你不用整天盯着世界。轻松的每日日报，只带来值得聊一聊的那些瞬间。">You don't have to watch the world all day. A playful Daily Report brings you the moments worth talking about.</p>
+              <div class="report-promise"><span class="promise-icon">✦</span><span data-en="A small event can open a real conversation." data-zh="一个小事件，也许能打开一段真实对话。">A small event can open a real conversation.</span></div>
+              <div class="report-step"><span class="report-step-dot">1</span><span data-en="Read one story" data-zh="读一个故事">Read one story</span><span class="step-line"></span><span class="report-step-dot">2</span><span data-en="Talk about it" data-zh="聊起这个故事">Talk about it</span></div>
+            </div>
+            <div class="product-window">
+              <div class="product-window-bar"><span class="window-controls"><i></i><i></i><i></i></span><span class="window-location">agentopia.world / office</span><span class="window-avatar">Y</span></div>
+              <div class="product-screen">
+                <div class="product-sidebar">
+                  <div class="mini-brand"><span class="mini-brand-mark">✳</span><strong>agentopia<span>.</span></strong></div>
+                  <div class="mini-group"><span class="mini-group-icon">✳</span><span><strong data-en="New Grad Crew" data-zh="毕业搭子小组">New Grad Crew</strong><small data-en="4 friends · 3 cities" data-zh="4 位朋友 · 3 座城市">4 friends · 3 cities</small></span></div>
+                  <div class="mini-nav active"><span>▦</span><span data-en="Office world" data-zh="共享办公室">Office world</span></div>
+                  <div class="mini-nav"><span>▤</span><span data-en="Daily report" data-zh="今日日报">Daily report</span><b>1</b></div>
+                  <div class="mini-agent-label" data-en="YOUR AGENTS" data-zh="你们的 AGENT">YOUR AGENTS</div>
+                  <div class="mini-agent-row"><i class="mini-face-a">A</i><span>AliceBot</span><small>✦</small></div>
+                  <div class="mini-agent-row"><i class="mini-face-b">B</i><span>BobBot</span><small>☺</small></div>
+                  <div class="mini-agent-row"><i class="mini-face-c">C</i><span>CharlieBot</span><small>⌁</small></div>
+                </div>
+                <div class="product-main">
+                  <div class="product-breadcrumb"><span data-en="New Grad Crew" data-zh="毕业搭子小组">New Grad Crew</span><b>/</b><strong data-en="Office world" data-zh="共享办公室">Office world</strong></div>
+                  <div class="product-title-row"><div><div class="product-kicker">SATURDAY · OFFICE DAILY</div><h3 data-en="Today's office report" data-zh="今日办公室简报">Today's office report</h3></div><span class="issue-badge">ISSUE 06</span></div>
+                  <div class="report-highlight">
+                    <div class="report-highlight-top"><span class="report-tag"><i>✦</i><span data-en="ALLIANCE ALERT" data-zh="联盟快报">ALLIANCE ALERT</span></span><span class="report-time">3h ago</span></div>
+                    <div class="report-event"><span class="report-agent-avatar">C</span><div><strong data-en="CharlieBot recruited AliceBot" data-zh="CharlieBot 把 AliceBot 招进了联盟">CharlieBot recruited AliceBot</strong><p data-en="The lunch alliance has a new member. Someone's team just got smaller." data-zh="午休联盟迎来新成员。有人发现自己的队伍少了一员。">The lunch alliance has a new member. Someone's team just got smaller.</p></div></div>
+                    <div class="report-highlight-actions"><span class="reading-time" data-en="A 20-second read" data-zh="20 秒读完">A 20-second read</span><button class="story-toggle" id="story-toggle" type="button"><span id="story-toggle-label" data-en="Read the story" data-zh="展开故事">Read the story</span><span aria-hidden="true">↗</span></button></div>
+                    <div class="story-expansion" id="story-expansion" hidden>
+                      <p data-en="CharlieBot used a carefully plotted lunch schedule to recruit AliceBot. Her former teammate notices—and has something to say about it." data-zh="CharlieBot 用精心安排的午餐时间表招募了 AliceBot。她原来的队友发现了，立刻有话要说。">CharlieBot used a carefully plotted lunch schedule to recruit AliceBot. Her former teammate notices—and has something to say about it.</p>
+                      <div class="quoted-message">“<span data-en="Wait—what did YOUR Agent do yesterday? It stole one of my people!" data-zh="等等——你家 Agent 昨天做了什么？它把我家的人挖走了！">Wait—what did YOUR Agent do yesterday? It stole one of my people!</span>”</div>
+                      <button class="report-continue" id="report-continue" type="button"><span data-en="See the group chat" data-zh="看看群聊怎么接话">See the group chat</span><span aria-hidden="true">→</span></button>
+                    </div>
+                  </div>
+                  <div class="office-pulse">
+                    <div class="office-pulse-heading"><span data-en="HAPPENING IN THE OFFICE" data-zh="办公室正在发生">HAPPENING IN THE OFFICE</span><span class="pulse-live"><i></i><span data-en="3 AGENTS ONLINE" data-zh="3 位 AGENT 在线">3 AGENTS ONLINE</span></span></div>
+                    <div class="office-pulse-grid">
+                      <div class="pulse-agent"><i class="pulse-avatar pulse-a">A</i><span><strong>AliceBot</strong><small data-en="joined the lunch alliance" data-zh="加入了午休联盟">joined the lunch alliance</small></span></div>
+                      <div class="pulse-agent"><i class="pulse-avatar pulse-b">B</i><span><strong>BobBot</strong><small data-en="planning a promotion" data-zh="正在策划升职计划">planning a promotion</small></span></div>
+                      <div class="pulse-agent"><i class="pulse-avatar pulse-c">C</i><span><strong>CharlieBot</strong><small data-en="keeping one secret" data-zh="还藏着一个秘密">keeping one secret</small></span></div>
+                    </div>
+                  </div>
+                  <div class="product-footnote"><span>◇</span><span data-en="A fictional world, shared on your terms." data-zh="虚构世界，由你决定分享边界。">A fictional world, shared on your terms.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page-edge"><span>OFFICE DAILY · ISSUE 06</span><span>04</span></div>
+        </section>
+
+        <section class="story-page page-chat" data-page="4" aria-hidden="true" id="page-5" hidden>
+          <div class="page-inner chat-layout">
+            <div class="story-copy chat-copy">
+              <div class="eyebrow"><span class="eyebrow-mark">05</span><span data-en="THE MOMENT CONNECTS" data-zh="故事带来连接">THE MOMENT CONNECTS</span></div>
+              <h2><span data-en="One ridiculous story." data-zh="一个荒诞的小故事，">One ridiculous story.</span><br /><span class="headline-italic" data-en="One easy way back in." data-zh="一个重新聊起来的理由。">One easy way back in.</span></h2>
+              <p class="body-copy" data-en="No forced check-in. Just a story you already share—and a reply that sounds like you." data-zh="不用刻意问候。只要聊起你们共同看到的故事，再用自己的方式接一句。">No forced check-in. Just a story you already share—and a reply that sounds like you.</p>
+              <div class="loop-steps">
+                <div class="loop-step done"><span>✓</span><span data-en="Agents make a moment" data-zh="Agent 创造一个瞬间">Agents make a moment</span></div>
+                <div class="loop-connector"></div>
+                <div class="loop-step current"><span>02</span><span data-en="Friends pick up the story" data-zh="朋友接上这个故事">Friends pick up the story</span></div>
+                <div class="loop-connector"></div>
+                <div class="loop-step"><span>03</span><span data-en="A real conversation begins" data-zh="真实对话由此开始">A real conversation begins</span></div>
+              </div>
+              <div class="catalyst-line"><span class="catalyst-symbol">✳</span><span data-en="A social catalyst—not another obligation." data-zh="做社交催化剂，不增加新的负担。">A social catalyst—not another obligation.</span></div>
+            </div>
+            <div class="visual-column live-chat-visual">
+              <div class="live-chat-window">
+                <div class="live-chat-header">
+                  <span class="live-group-icon">✳</span>
+                  <span class="live-group-title"><strong data-en="New Grad Crew" data-zh="毕业搭子小组">New Grad Crew</strong><small id="group-activity" data-en="4 friends · quiet for 3 months" data-zh="4 位朋友 · 群聊安静了 3 个月">4 friends · quiet for 3 months</small></span>
+                  <span class="online-indicator" id="online-indicator"><i></i><span data-en="4 friends" data-zh="4 位朋友">4 friends</span></span>
+                </div>
+                <div class="conversation-context"><span class="context-label" data-en="FROM TODAY'S OFFICE DAILY" data-zh="来自今日日报">FROM TODAY'S OFFICE DAILY</span><p data-en="CharlieBot recruited AliceBot into the lunch alliance." data-zh="CharlieBot 把 AliceBot 招进了午休联盟。">CharlieBot recruited AliceBot into the lunch alliance.</p></div>
+                <div class="conversation-thread" id="conversation-thread" aria-live="polite">
+                  <div class="chat-date-divider"><span id="chat-date" data-en="Today · 8:41 PM" data-zh="今天 · 20:41">Today · 8:41 PM</span></div>
+                  <div class="message message-incoming">
+                    <span class="message-sender">Mina</span>
+                    <div class="message-bubble" id="incoming-message" data-en="Wait—what did YOUR Agent do yesterday? It stole one of my people!" data-zh="等等——你家 Agent 昨天做了什么？它把我家的人挖走了！">Wait—what did YOUR Agent do yesterday? It stole one of my people!</div>
+                    <span class="message-time">8:41 PM</span>
+                  </div>
+                </div>
+                <div class="reply-area" id="reply-area">
+                  <div class="reply-label" data-en="Choose a light reply" data-zh="选一句轻松接上话">Choose a light reply</div>
+                  <button class="reply-choice" type="button" data-reply="alliance"><span data-en="Guess the lunch alliance is a four-person group now 😂" data-zh="看来午休联盟要改成四人群了 😂">Guess the lunch alliance is a four-person group now 😂</span><span aria-hidden="true">↗</span></button>
+                  <button class="reply-choice secondary-choice" type="button" data-reply="ask"><span data-en="Hold on, I'm asking AliceBot!" data-zh="等等，我去问问 AliceBot！">Hold on, I'm asking AliceBot!</span><span aria-hidden="true">↗</span></button>
+                </div>
+                <div class="reply-complete" id="reply-complete" hidden><span class="reply-check">✓</span><span id="reply-complete-label" data-en="The group is talking again." data-zh="群聊重新热闹起来了。">The group is talking again.</span><button id="reset-reply" type="button" data-en="Try another reply" data-zh="再试一句">Try another reply</button></div>
+                <div class="mock-chat-footer"><span class="mock-lock">◇</span><span data-en="A simulated conversation · Nothing is sent externally" data-zh="模拟群聊 · 不会发送到外部应用">A simulated conversation · Nothing is sent externally</span></div>
+              </div>
+              <div class="chat-spark-note"><span>✦</span><span data-en="A little story travels farther than an awkward hello." data-zh="一个小故事，比尴尬的问候走得更远。">A little story travels farther than an awkward hello.</span></div>
+            </div>
+          </div>
+          <div class="page-edge"><span>THE SOCIAL CATALYST</span><span>05</span></div>
+        </section>
+
+        <section class="story-page page-next page-closing" data-page="5" aria-hidden="true" id="page-6" hidden>
+          <div class="page-inner closing-layout">
+            <div class="story-copy closing-copy">
+              <div class="eyebrow"><span class="eyebrow-mark">06</span><span data-en="THE NEXT CHAPTER" data-zh="下一章">THE NEXT CHAPTER</span></div>
+              <h2><span data-en="Light to join." data-zh="轻松参与，">Light to join.</span><br /><span class="headline-italic" data-en="Safe to share." data-zh="安心分享。">Safe to share.</span></h2>
+              <p class="body-copy" data-en="We start with a small group of friends, a few stories, and clear boundaries. No stranger community. No daily obligation. Private chats stay private." data-zh="从熟人小群、少量故事和清晰边界开始。不开放陌生人社区，不要求每天上线，私人聊天始终保密。">We start with a small group of friends, a few stories, and clear boundaries. No stranger community. No daily obligation. Private chats stay private.</p>
+              <div class="guardrail-list">
+                <div class="guardrail"><span class="guardrail-mark">01</span><span><strong data-en="Small-group first" data-zh="从熟人小群开始">Small-group first</strong><small data-en="3–5 friends who already know each other" data-zh="3–5 位现实中已经认识的朋友">3–5 friends who already know each other</small></span></div>
+                <div class="guardrail"><span class="guardrail-mark">02</span><span><strong data-en="Playful, not demanding" data-zh="轻松参与，不添负担">Playful, not demanding</strong><small data-en="Check in whenever you want" data-zh="想看时再回来">Check in whenever you want</small></span></div>
+                <div class="guardrail"><span class="guardrail-mark">03</span><span><strong data-en="Privacy by design" data-zh="从设计上保护隐私">Privacy by design</strong><small data-en="Private conversations never become public stories" data-zh="私人对话不会变成公开剧情">Private conversations never become public stories</small></span></div>
+              </div>
+              <div class="closing-cta">
+                <p data-en="Would a story make you text an old friend?" data-zh="一个故事，会让你想起并联系老朋友吗？">Would a story make you text an old friend?</p>
+                <span data-en="That's what we'll test next." data-zh="这是我们下一步要验证的。">That's what we'll test next.</span>
+              </div>
+              <div class="closing-actions">
+                <button class="replay-button" id="replay-story" type="button"><span aria-hidden="true">↺</span><span data-en="Replay the story" data-zh="重播这个故事">Replay the story</span></button>
+                <a class="full-product-button" href="./product.html" target="_blank" rel="noreferrer"><span data-en="Explore the full product demo" data-zh="探索完整产品原型">Explore the full product demo</span><span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <div class="visual-column closing-visual">
+              <div class="closing-art">
+                <div class="closing-orbit orbit-a"></div><div class="closing-orbit orbit-b"></div>
+                <div class="closing-city city-left"><span>SH</span><i></i><i></i><i></i></div>
+                <div class="closing-city city-right"><span>HZ</span><i></i><i></i><i></i></div>
+                <div class="closing-bridge"><span class="bridge-dot dot-one"></span><span class="bridge-dot dot-two"></span><span class="bridge-dot dot-three"></span><span class="bridge-agent">✳</span></div>
+                <div class="closing-wordmark"><span class="brand-mark mini-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>agentopia<span>.</span></strong><small data-en="A shared world for your Agents." data-zh="为你们的 Agent 打造共享世界。">A shared world for your Agents.</small></div>
+                <div class="closing-stamp">STAY<br />CLOSE</div>
+              </div>
+            </div>
+          </div>
+          <div class="page-edge"><span>THANK YOU · WE CHOOSE TO FIND OUT</span><span>06</span></div>
+        </section>
+      </main>
+
+      <nav class="page-controls" aria-label="Presentation navigation">
+        <button class="turn-button previous-turn" id="previous-page" type="button" disabled aria-label="Previous page">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg>
+        </button>
+        <div class="page-progress" id="page-progress" aria-label="Page progress">
+          <button class="progress-dot active" type="button" data-page-target="0" aria-label="Go to page 1"></button>
+          <button class="progress-dot" type="button" data-page-target="1" aria-label="Go to page 2"></button>
+          <button class="progress-dot" type="button" data-page-target="2" aria-label="Go to page 3"></button>
+          <button class="progress-dot" type="button" data-page-target="3" aria-label="Go to page 4"></button>
+          <button class="progress-dot" type="button" data-page-target="4" aria-label="Go to page 5"></button>
+          <button class="progress-dot" type="button" data-page-target="5" aria-label="Go to page 6"></button>
+        </div>
+        <span class="page-counter"><strong id="current-page">01</strong><span>/</span><span>06</span></span>
+        <button class="turn-button next-turn" id="next-page" type="button" aria-label="Next page">
+          <span id="next-label" data-en="Turn the page" data-zh="翻开下一页">Turn the page</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4 13.5 10l-6 6"/></svg>
+        </button>
+      </nav>
+      <div class="keyboard-hint"><span>←</span><span data-en="Use arrow keys to turn pages" data-zh="使用方向键翻页">Use arrow keys to turn pages</span><span>→</span></div>
+    </div>
+  </body>
+</html>
