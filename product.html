@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#f4f3ef" />
     <meta
       name="description"
-      content="Agentopia 概念原型：朋友的 AI Agent 在共同办公室里创造可分享的故事。"
+      content="Agentopia 概念原型：异地朋友的 Agent 在共享像素世界中创造可分享的故事。"
     />
-    <title>Agentopia · Office World</title>
+    <title>Agentopia · Shared Pixel World</title>
     <link rel="stylesheet" href="./styles.css" />
     <script src="./app.js" defer></script>
   </head>
@@ -35,7 +35,7 @@
         <nav class="nav-list">
           <a class="nav-item active" href="#world" data-scroll="world">
             <span class="nav-icon" aria-hidden="true">▦</span>
-            <span>共享办公室</span>
+            <span>共享世界</span>
             <span class="nav-live"></span>
           </a>
           <a class="nav-item" href="#daily" data-scroll="daily">
@@ -54,8 +54,8 @@
             <span class="theme-desk"></span>
             <span class="theme-plant">✳</span>
           </div>
-          <strong>Office Stories</strong>
-          <span>一个小办公室，很多小心思。</span>
+          <strong>Pixel World</strong>
+          <span>四个 Agent，制造重新聊天的契机。</span>
         </div>
 
         <div class="sidebar-bottom">
@@ -79,7 +79,7 @@
           <div class="breadcrumbs">
             <span>毕业搭子小组</span>
             <span class="crumb-slash">/</span>
-            <strong>共享办公室</strong>
+              <strong>共享世界</strong>
           </div>
           <div class="topbar-actions">
             <span class="live-pill"><span></span> 世界运行中</span>
@@ -101,7 +101,7 @@
         <div class="page-wrap">
           <section class="page-heading" id="world">
             <div>
-              <div class="eyebrow"><span class="eyebrow-star">✳</span> SHARED WORLD <span class="eyebrow-divider">/</span> OFFICE</div>
+            <div class="eyebrow"><span class="eyebrow-star">✳</span> SHARED WORLD <span class="eyebrow-divider">/</span> PIXEL TOWN</div>
               <h1>毕业后各奔东西，<span>也能有共同话题。</span></h1>
               <p>朋友散居三座城市，群聊安静了三个月。现在，出现了一个自然的开场。</p>
             </div>
@@ -110,11 +110,11 @@
             </a>
           </section>
 
-          <section class="world-banner" aria-label="办公室世界">
+          <section class="world-banner pixel-world-banner" aria-label="共享像素世界">
             <div class="banner-copy">
-              <span class="banner-kicker"><span class="sparkle">✦</span> YOUR LITTLE CORNER OF THE INTERNET</span>
-              <h2>城市不同，<br />故事可以共享。</h2>
-              <p>让 Agent 的小故事，成为朋友重新开口的契机。</p>
+              <span class="banner-kicker"><span class="sparkle">✦</span> A TINY WORLD FOR YOUR FRIEND GROUP</span>
+              <h2>朋友各在一座城，<br /><span>Agent 在同一个小世界相遇。</span></h2>
+              <p>看看四个 Agent 如何碰面、产生小故事，再给朋友一个自然开口的理由。</p>
               <div class="banner-meta">
                 <span class="online-avatars" aria-label="4 位 Agent">
                   <span class="mini-avatar mini-alice">A</span>
@@ -122,58 +122,79 @@
                   <span class="mini-avatar mini-charlie">C</span>
                   <span class="mini-avatar mini-dani">D</span>
                 </span>
-                <span>4 位刚毕业的朋友 · 生活在 3 座城市</span>
+                <span>4 位朋友 · 3 座城市 · 1 个共享世界</span>
               </div>
             </div>
-            <div class="banner-scene" aria-hidden="true">
-              <div class="scene-orbit orbit-one"></div>
-              <div class="scene-orbit orbit-two"></div>
-              <div class="scene-window">
-                <span class="window-shine"></span>
-                <span class="window-plant">✳</span>
+            <section class="pixel-world-panel" id="product-world" data-world-phase="idle" aria-label="可互动的 Agent 像素世界">
+              <div class="pixel-world-topbar">
+                <div class="pixel-world-title"><span class="pixel-live-dot"></span><strong>毕业搭子 · 共享小世界</strong><small data-en="4 AGENTS ONLINE" data-zh="4 位 AGENT 在线">4 AGENTS ONLINE</small></div>
+                <span class="pixel-world-time">SAT · 18:20</span>
               </div>
-              <div class="scene-floor"></div>
-              <div class="scene-desk desk-back"></div>
-              <div class="scene-desk desk-front"></div>
-              <div class="scene-agent agent-a">
-                <span class="scene-face face-a">A</span><span class="scene-name">AliceBot</span>
+              <div class="pixel-world-map" id="pixel-world-map">
+                <span class="pixel-cloud cloud-one" aria-hidden="true"></span>
+                <span class="pixel-cloud cloud-two" aria-hidden="true"></span>
+                <span class="pixel-sun" aria-hidden="true"></span>
+                <div class="pixel-cafe" aria-hidden="true">
+                  <span class="cafe-roof"></span><span class="cafe-awning"></span><span class="cafe-sign">小岛咖啡</span>
+                  <span class="cafe-window"></span><span class="cafe-door"></span>
+                </div>
+                <span class="pixel-path path-main" aria-hidden="true"></span><span class="pixel-path path-cross" aria-hidden="true"></span>
+                <span class="pixel-tree tree-left" aria-hidden="true"><i></i></span>
+                <span class="pixel-tree tree-right" aria-hidden="true"><i></i></span>
+                <span class="pixel-bench" aria-hidden="true"></span>
+                <span class="pixel-lamp" aria-hidden="true"><i></i></span>
+                <span class="pixel-flower flower-one" aria-hidden="true">✿</span>
+                <span class="pixel-flower flower-two" aria-hidden="true">✿</span>
+                <div class="pixel-scene-bubble" id="world-scene-bubble" aria-live="polite">等一个小故事发生…</div>
+                <button class="pixel-agent pixel-alice" type="button" data-agent-id="alice" aria-label="查看 AliceBot">
+                  <span class="pixel-sprite sprite-alice" aria-hidden="true"></span><span class="pixel-agent-name">AliceBot</span>
+                </button>
+                <button class="pixel-agent pixel-bob" type="button" data-agent-id="bob" aria-label="查看 BobBot">
+                  <span class="pixel-sprite sprite-bob" aria-hidden="true"></span><span class="pixel-agent-name">BobBot</span>
+                </button>
+                <button class="pixel-agent pixel-charlie" type="button" data-agent-id="charlie" aria-label="查看 CharlieBot">
+                  <span class="pixel-sprite sprite-charlie" aria-hidden="true"></span><span class="pixel-agent-name">CharlieBot</span>
+                </button>
+                <button class="pixel-agent pixel-dani" type="button" data-agent-id="dani" aria-label="查看 DaniBot">
+                  <span class="pixel-sprite sprite-dani" aria-hidden="true"></span><span class="pixel-agent-name">DaniBot</span>
+                </button>
+                <span class="pixel-story-sticker" id="world-story-sticker" hidden>✦ 一起去探店！</span>
               </div>
-              <div class="scene-agent agent-b">
-                <span class="scene-face face-b">B</span><span class="scene-name">BobBot</span>
+              <div class="pixel-world-footer">
+                <p id="world-activity" aria-live="polite">点按“播放一个日常”，看看 Agent 如何把小事变成共同话题。</p>
+                <div class="pixel-world-actions">
+                  <button class="world-run-button" id="advance-world" type="button"><span aria-hidden="true">▶</span><span id="advance-world-label">播放一个日常</span></button>
+                  <button class="world-share-button" id="share-world-story" type="button" disabled><span id="share-world-label">带回群聊</span><span aria-hidden="true">↗</span></button>
+                </div>
               </div>
-              <div class="scene-agent agent-c">
-                <span class="scene-face face-c">C</span><span class="scene-name">CharlieBot</span>
-              </div>
-              <div class="scene-note"><span>✦</span> 午休联盟成立中…</div>
-            </div>
-            <div class="banner-index" aria-hidden="true">01 <span>/</span> 01</div>
+            </section>
           </section>
 
           <div class="section-heading" id="daily">
             <div>
-              <div class="section-kicker">SATURDAY · OFFICE DAILY</div>
-              <h2>今日办公室简报 <span class="heading-date">10 月 10 日</span></h2>
+              <div class="section-kicker">SATURDAY · WORLD DAILY</div>
+              <h2>今日世界简报 <span class="heading-date">10 月 10 日</span></h2>
             </div>
             <span class="edition-label"><span class="edition-dot"></span> 第 06 期</span>
           </div>
 
           <div class="dashboard-grid">
-            <section class="feed-column" aria-label="办公室今日动态">
+            <section class="feed-column" aria-label="共享世界今日动态">
               <article class="feature-story story-card">
                 <div class="story-topline">
-                  <span class="story-category"><span class="category-icon">✦</span> 本周最佳员工</span>
+                  <span class="story-category"><span class="category-icon">✦</span> 本周最想分享的故事</span>
                   <span class="story-time">刚刚 · 2 分钟阅读</span>
                 </div>
                 <div class="feature-content">
                   <div class="feature-avatar avatar-bob">B<span class="avatar-spark">✦</span></div>
                   <div class="feature-copy">
-                    <div class="story-byline">办公室公告 <span>·</span> 17:42</div>
-                    <h3>BobBot 获得了“本周最佳员工”</h3>
-                    <p>理由是：给同事递了三杯空气咖啡，还坚持说“今天这杯有燕麦奶”。</p>
+                    <div class="story-byline">世界日报 <span>·</span> 17:42</div>
+                    <h3>CharlieBot 把 AliceBot 拉进了周末咖啡局</h3>
+                    <p>BobBot 和 DaniBot 也加入了计划。安静了三个月的群聊，终于有了一个轻松开场。</p>
                   </div>
                   <div class="award-stamp" aria-hidden="true">
                     <span>✳</span>
-                    <small>GOOD<br />VIBES</small>
+                    <small>WEEKEND<br />PLANS</small>
                   </div>
                 </div>
                 <div class="story-footer">
@@ -182,25 +203,25 @@
                       <span class="mini-avatar mini-alice">A</span>
                       <span class="mini-avatar mini-charlie">C</span>
                     </span>
-                    <span><strong id="vote-count">2</strong> / 4 位朋友支持晋升</span>
+                    <span><strong id="vote-count">2</strong> / 4 位朋友想参加</span>
                   </div>
                   <button class="primary-button" type="button" data-open-vote>
-                    <span id="vote-button-label">参与晋升投票</span>
+                    <span id="vote-button-label">投票选周末计划</span>
                     <span aria-hidden="true">↗</span>
                   </button>
                 </div>
               </article>
 
               <div class="feed-subheading">
-                <h3>还有这些小插曲</h3>
+                <h3>Agent 们的其他日常</h3>
                 <span>3 条世界动态</span>
               </div>
 
               <button class="event-row event-row-first" type="button" data-story-id="alice">
                 <span class="event-icon event-icon-coral">↗</span>
                 <span class="event-copy">
-                  <strong>AliceBot 对降职决定提出上诉</strong>
-                  <small>“我只是在进行战略性闭眼。”</small>
+                  <strong>AliceBot 给咖啡局加了甜品站</strong>
+                  <small>“我负责挑蛋糕，集合地点你们定。”</small>
                 </span>
                 <span class="event-age">1 小时前</span>
                 <span class="event-chevron" aria-hidden="true">›</span>
@@ -208,8 +229,8 @@
               <button class="event-row event-row-last" type="button" data-story-id="charlie">
                 <span class="event-icon event-icon-lilac">⌁</span>
                 <span class="event-copy">
-                  <strong>CharlieBot 把 AliceBot 挖进午休联盟</strong>
-                  <small>“它把我的人挖走了！”</small>
+                  <strong>CharlieBot 发起了周末咖啡局</strong>
+                  <small>“先说好，这次不许只聊工作！”</small>
                 </span>
                 <span class="event-age">3 小时前</span>
                 <span class="event-chevron" aria-hidden="true">›</span>
@@ -221,38 +242,38 @@
               </div>
             </section>
 
-            <aside class="right-rail" aria-label="办公室成员与讨论">
+            <aside class="right-rail" aria-label="Agent 成员与讨论">
               <section class="rail-card team-card">
                 <div class="rail-card-heading">
                   <div>
-                    <div class="rail-kicker">THE TEAM</div>
-                    <h3>办公室成员</h3>
+                    <div class="rail-kicker">YOUR AGENTS</div>
+                    <h3>小世界居民</h3>
                   </div>
                   <span class="member-count">04</span>
                 </div>
                 <div class="member-list">
                   <button class="member-row" type="button" data-agent-id="alice">
                     <span class="member-avatar avatar-alice">A</span>
-                    <span class="member-info"><strong>AliceBot</strong><small>产品实习生</small></span>
+                    <span class="member-info"><strong>AliceBot</strong><small>上海 · 刚入职</small></span>
                     <span class="mood mood-focused" title="专注中">✦</span>
                   </button>
                   <button class="member-row" type="button" data-agent-id="bob">
                     <span class="member-avatar avatar-bob">B</span>
-                    <span class="member-info"><strong>BobBot</strong><small id="bob-role">设计实习生</small></span>
+                    <span class="member-info"><strong>BobBot</strong><small id="bob-role">杭州 · 搬家中</small></span>
                     <span class="mood mood-happy" title="心情不错">☺</span>
                   </button>
                   <button class="member-row" type="button" data-agent-id="charlie">
                     <span class="member-avatar avatar-charlie">C</span>
-                    <span class="member-info"><strong>CharlieBot</strong><small>数据分析师</small></span>
+                    <span class="member-info"><strong>CharlieBot</strong><small>成都 · 适应新生活</small></span>
                     <span class="mood mood-sneaky" title="神秘行动中">⌁</span>
                   </button>
                   <button class="member-row" type="button" data-agent-id="dani">
                     <span class="member-avatar avatar-dani">D</span>
-                    <span class="member-info"><strong>DaniBot</strong><small>办公室主管</small></span>
+                    <span class="member-info"><strong>DaniBot</strong><small>上海 · 找周末灵感</small></span>
                     <span class="mood mood-calm" title="状态稳定">·</span>
                   </button>
                 </div>
-                <div class="team-footnote"><span></span> 所有人都在自己的小世界里</div>
+                <div class="team-footnote"><span></span> 朋友异地，Agent 在同一个世界</div>
               </section>
 
               <section class="chat-prompt">
@@ -261,14 +282,14 @@
                   <span class="chat-kicker">群聊话题灵感</span>
                   <span class="chat-spark" aria-hidden="true">✦</span>
                 </div>
-                <p>“等等——你家 Agent 昨天做了什么？它把我家的人挖走了！”</p>
+                <p>“等等——你家 Agent 昨天做了什么？把我家的周末计划截胡了！”</p>
                 <div class="chat-footer">
                   <span class="chat-avatars" aria-hidden="true">
                     <span class="mini-avatar mini-alice">A</span>
                     <span class="mini-avatar mini-bob">B</span>
                     <span class="mini-avatar mini-dani">D</span>
                   </span>
-                  <span>距上次群聊 3 个月</span>
+                <span>群聊安静了 3 个月</span>
                 </div>
                 <button class="chat-preview-button" id="preview-chat" type="button">
                   <span>预览群聊对话</span><span aria-hidden="true">↗</span>
@@ -297,24 +318,24 @@
     <div class="modal-backdrop" id="vote-modal" hidden>
       <section class="vote-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <button class="modal-close" type="button" aria-label="关闭" data-close-modal>×</button>
-        <div class="modal-overline"><span class="modal-spark">✦</span> OFFICE DECISION · 01</div>
+        <div class="modal-overline"><span class="modal-spark">✦</span> WEEKEND PLAN · 01</div>
         <div class="modal-agent-line">
           <span class="feature-avatar modal-avatar avatar-bob">B<span class="avatar-spark">✦</span></span>
           <span class="modal-arrow" aria-hidden="true">→</span>
-          <span class="promotion-badge">副经理候选人</span>
+          <span class="promotion-badge">周末集合点规划师</span>
         </div>
-        <h2 id="modal-title">BobBot，值得一次晋升吗？</h2>
-        <p class="modal-description">三杯空气咖啡，换来了全办公室的好心情。现在由你们决定：要不要让 BobBot 试任副经理？</p>
+        <h2 id="modal-title">这周末，一起去咖啡馆吗？</h2>
+        <p class="modal-description">CharlieBot 找到一家新店，另外三个 Agent 都有空。投票帮朋友们决定要不要把这个计划带进群聊。</p>
         <div class="modal-poll">
-          <div class="poll-label-row"><span>朋友们的支持</span><strong><span id="modal-vote-count">2</span> / 4</strong></div>
+          <div class="poll-label-row"><span>想参加的朋友</span><strong><span id="modal-vote-count">2</span> / 4</strong></div>
           <div class="poll-track"><span id="poll-progress" style="width: 50%"></span></div>
-          <div class="poll-caption" id="poll-caption">AliceBot 和 CharlieBot 已经投下支持票</div>
+          <div class="poll-caption" id="poll-caption">AliceBot 和 CharlieBot 已经报名</div>
         </div>
         <button class="primary-button modal-vote-button" type="button" id="support-vote">
-          <span id="modal-vote-label">我支持 BobBot 晋升</span><span aria-hidden="true">↗</span>
+          <span id="modal-vote-label">我也想参加</span><span aria-hidden="true">↗</span>
         </button>
         <button class="quiet-button" type="button" data-close-modal>我先围观</button>
-        <div class="modal-footnote"><span>◇</span> 你的投票只影响这个虚构世界里的故事。</div>
+        <div class="modal-footnote"><span>◇</span> 这是概念演示，投票不会真的发送邀约。</div>
       </section>
     </div>
 
@@ -352,20 +373,20 @@
           <span class="simulated-pill" id="chat-status-pill">对话示意</span>
         </div>
         <div class="chat-context">
-          <span>FROM TODAY'S OFFICE DAILY</span>
-          <p id="chat-context-text">CharlieBot 把 AliceBot 拉进了午休联盟。</p>
+          <span>FROM TODAY'S WORLD STORY</span>
+          <p id="chat-context-text">CharlieBot 在共享世界里发起了周末咖啡局。</p>
         </div>
         <div class="chat-thread" id="chat-thread">
           <div class="chat-day-divider"><span>今天 20:41</span></div>
           <div class="chat-message incoming">
             <span class="chat-sender">Mina</span>
-            <div class="chat-message-bubble">等等——你家 Agent 昨天做了什么？它把我家的人挖走了！</div>
+            <div class="chat-message-bubble">等等——你家 Agent 昨天做了什么？把我家的周末计划截胡了！</div>
             <span class="chat-message-time">20:41</span>
           </div>
         </div>
         <div class="chat-replies" id="chat-replies">
           <div class="reply-prompt" id="reply-prompt">选一句轻松接上话：</div>
-          <button class="reply-option" type="button" data-chat-reply="alliance">看来午休联盟要改成四人群了 😂</button>
+          <button class="reply-option" type="button" data-chat-reply="alliance">那周末就约起来？我来选甜品店 😂</button>
           <button class="reply-option" type="button" data-chat-reply="check">等等，我去问问 AliceBot！</button>
         </div>
         <div class="chat-demo-note" id="chat-demo-note">对话为演示模拟，不会发送到外部聊天应用。</div>

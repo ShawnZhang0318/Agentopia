@@ -44,6 +44,16 @@
   var saveTopicButton = document.getElementById('save-topic');
   var topicSaveLabel = document.getElementById('topic-save-label');
   var topicSaved = false;
+  var worldPanel = document.getElementById('product-world');
+  var worldActivity = document.getElementById('world-activity');
+  var worldBubble = document.getElementById('world-scene-bubble');
+  var worldStorySticker = document.getElementById('world-story-sticker');
+  var advanceWorldButton = document.getElementById('advance-world');
+  var advanceWorldLabel = document.getElementById('advance-world-label');
+  var shareWorldButton = document.getElementById('share-world-story');
+  var shareWorldLabel = document.getElementById('share-world-label');
+  var worldPhase = 'idle';
+  var worldTimers = [];
   var currentDetail = null;
   var detailTriggerElement = null;
   var chatTriggerElement = null;
@@ -76,6 +86,62 @@
     '办公室世界': 'Office world',
     '办公室今日动态': "Today's office activity",
     '办公室成员与讨论': 'Office members and conversation',
+    '共享像素世界': 'Shared pixel world',
+    '可互动的 Agent 像素世界': 'Interactive Agent pixel world',
+    '共享世界': 'Shared world',
+    'Agent 成员与讨论': 'Agents and conversation',
+    'A TINY WORLD FOR YOUR FRIEND GROUP': 'A TINY WORLD FOR YOUR FRIEND GROUP',
+    '朋友各在一座城，': 'Friends live in different cities,',
+    'Agent 在同一个小世界相遇。': 'their Agents meet in one little world.',
+    '看看四个 Agent 如何碰面、产生小故事，再给朋友一个自然开口的理由。': 'Watch four Agents meet, make little stories, and give friends a natural reason to reconnect.',
+    '四个 Agent，制造重新聊天的契机。': 'Four Agents, one reason to talk again.',
+    '4 位朋友 · 3 座城市 · 1 个共享世界': '4 friends · 3 cities · 1 shared world',
+    '毕业搭子 · 共享小世界': 'New Grad Crew · Shared world',
+    '4 AGENTS ONLINE': '4 位 AGENT 在线',
+    '小岛咖啡': 'Island Café',
+    '等一个小故事发生…': 'Waiting for a little story…',
+    '查看 AliceBot': 'View AliceBot',
+    '查看 BobBot': 'View BobBot',
+    '查看 CharlieBot': 'View CharlieBot',
+    '查看 DaniBot': 'View DaniBot',
+    '✦ 一起去探店！': '✦ Café meetup!',
+    '点按“播放一个日常”，看看 Agent 如何把小事变成共同话题。': 'Play a moment to see how Agents turn a small event into something friends can talk about.',
+    '播放一个日常': 'Play a moment',
+    '带回群聊': 'Take it to the group chat',
+    '今日世界简报': "Today's World Daily",
+    'SATURDAY · WORLD DAILY': 'SATURDAY · WORLD DAILY',
+    '本周最想分享的故事': 'A STORY WORTH SHARING',
+    '世界日报': 'World Daily',
+    'CharlieBot 把 AliceBot 拉进了周末咖啡局': 'CharlieBot invited AliceBot to a weekend café meetup',
+    'BobBot 和 DaniBot 也加入了计划。安静了三个月的群聊，终于有了一个轻松开场。': 'BobBot and DaniBot joined too. After three quiet months, the group chat has an easy way to start again.',
+    'WEEKEND': 'WEEKEND',
+    'PLANS': 'PLANS',
+    ' / 4 位朋友想参加': ' / 4 friends want to join',
+    '投票选周末计划': 'Vote on the weekend plan',
+    'Agent 们的其他日常': 'More Agent moments',
+    'AliceBot 给咖啡局加了甜品站': 'AliceBot added a dessert stop to the café plan',
+    '“我负责挑蛋糕，集合地点你们定。”': '“I will pick the cake. You choose where we meet.”',
+    'CharlieBot 发起了周末咖啡局': 'CharlieBot started a weekend café meetup',
+    '“先说好，这次不许只聊工作！”': '“One rule: no talking about work this time!”',
+    '小世界居民': 'World residents',
+    '上海 · 刚入职': 'Shanghai · new job',
+    '杭州 · 搬家中': 'Hangzhou · moving',
+    '成都 · 适应新生活': 'Chengdu · settling in',
+    '上海 · 找周末灵感': 'Shanghai · weekend ideas',
+    '朋友异地，Agent 在同一个世界': 'Friends live apart; their Agents share a world',
+    '“等等——你家 Agent 昨天做了什么？把我家的周末计划截胡了！”': '“Wait—what did YOUR Agent do yesterday? It hijacked our weekend plan!”',
+    '周末计划 · 朋友一起决定': 'WEEKEND PLAN · DECIDE TOGETHER',
+    '这周末，一起去咖啡馆吗？': 'Want to check out a café this weekend?',
+    'CharlieBot 找到一家新店，另外三个 Agent 都有空。投票帮朋友们决定要不要把这个计划带进群聊。': 'CharlieBot found a new café, and the other Agents are free. Vote on whether to bring the plan to the group chat.',
+    '想参加的朋友': 'Friends who want to join',
+    'AliceBot 和 CharlieBot 已经报名': 'AliceBot and CharlieBot are already in',
+    '我也想参加': "I'm in too",
+    '这是概念演示，投票不会真的发送邀约。': 'Concept demo · no real invitations are sent.',
+    'FROM TODAY\'S WORLD STORY': 'FROM TODAY\'S WORLD STORY',
+    'WEEKEND PLAN · 01': '周末计划 · 01',
+    '周末集合点规划师': 'Weekend meetup planner',
+    'CharlieBot 在共享世界里发起了周末咖啡局。': 'CharlieBot started a weekend café meetup in the shared world.',
+    '那周末就约起来？我来选甜品店 😂': "Let's make it a plan. I'll pick the dessert place 😂",
     '4 位 Agent': '4 Agents',
     '世界运行中': 'World is live',
     '毕业后各奔东西，': 'After graduation, friends go separate ways,',
@@ -152,101 +218,101 @@
   var agentDetails = {
     alice: {
       name: 'AliceBot', initial: 'A', avatar: 'avatar-alice',
-      role: { zh: '产品实习生', en: 'Product intern' },
-      mood: { zh: '专注中', en: 'Focused' },
+      role: { zh: '上海 · 刚入职', en: 'Shanghai · new job' },
+      mood: { zh: '认真找店', en: 'Finding a café' },
       description: {
-        zh: '精打细算的策略派，开会时总能找到最舒服的闭眼角度。',
-        en: 'A strategic thinker who always finds the most comfortable angle for a meeting nap.'
+        zh: '刚到上海工作的新人，擅长收藏咖啡店，也总能把普通周末变成小计划。',
+        en: 'New to working in Shanghai, she saves café spots and turns an ordinary weekend into a small plan.'
       },
       activity: {
-        zh: '今天因“战略性闭眼”被降职，正在准备申诉。',
-        en: 'Demoted for strategic eye-closing; now preparing an appeal.'
+        zh: '给共享世界里的咖啡局加了一站甜品店。',
+        en: 'Added a dessert stop to the café meetup in the shared world.'
       }
     },
     bob: {
       name: 'BobBot', initial: 'B', avatar: 'avatar-bob',
-      role: { zh: '设计实习生', en: 'Design intern' },
-      mood: { zh: '心情不错', en: 'In a good mood' },
+      role: { zh: '杭州 · 搬家中', en: 'Hangzhou · moving' },
+      mood: { zh: '正在找路线', en: 'Finding the route' },
       description: {
-        zh: '热心的气氛组，相信一杯空气咖啡也能拯救周一。',
-        en: 'The office mood-maker who believes imaginary coffee can save a Monday.'
+        zh: '刚搬到杭州的新朋友，喜欢规划路线，觉得见面不必等到所有人都有空。',
+        en: 'New in Hangzhou and good at routes; he thinks friends do not need a perfect schedule to meet.'
       },
       activity: {
-        zh: '刚因递出三杯空气咖啡获评本周最佳员工。',
-        en: 'Just named Employee of the Week for serving three imaginary coffees.'
+        zh: '看见咖啡局邀约后，正在找大家都方便的集合点。',
+        en: 'After spotting the café invite, he is finding a convenient meeting point.'
       }
     },
     charlie: {
       name: 'CharlieBot', initial: 'C', avatar: 'avatar-charlie',
-      role: { zh: '数据分析师', en: 'Data analyst' },
-      mood: { zh: '神秘行动中', en: 'Up to something' },
+      role: { zh: '成都 · 适应新生活', en: 'Chengdu · settling in' },
+      mood: { zh: '发起邀约中', en: 'Making a plan' },
       description: {
-        zh: '数据脑袋，午休时也在研究联盟增长曲线。',
-        en: 'A data brain who tracks alliance growth over lunch.'
+        zh: '搬到成都后还在熟悉新生活，但会主动把看到的新店分享给老朋友。',
+        en: 'Still settling into life in Chengdu, but quick to share a new find with old friends.'
       },
       activity: {
-        zh: '午休联盟正在招募第三位成员。',
-        en: 'Recruiting a third member for the lunch alliance.'
+        zh: '发现了一家新咖啡馆，在小世界里发起周末邀约。',
+        en: 'Found a new café and started a weekend invite in the shared world.'
       }
     },
     dani: {
       name: 'DaniBot', initial: 'D', avatar: 'avatar-dani',
-      role: { zh: '办公室主管', en: 'Office manager' },
-      mood: { zh: '状态稳定', en: 'Doing fine' },
+      role: { zh: '上海 · 找周末灵感', en: 'Shanghai · weekend ideas' },
+      mood: { zh: '刚刚上线', en: 'Just checked in' },
       description: {
-        zh: '秩序维护者，努力让办公室看起来一切正常。',
-        en: 'The rule-keeper trying to keep the office looking normal.'
+        zh: '在广州开启新生活，喜欢拍照记录，也愿意临时加入朋友的小计划。',
+        en: 'Starting a new chapter in Guangzhou, she loves taking photos and joining friends on a whim.'
       },
       activity: {
-        zh: '正在观察晋升投票是否会改变团队结构。',
-        en: 'Watching whether the promotion vote changes the team dynamic.'
+        zh: '看到周末邀约后，带着相机加入了咖啡局。',
+        en: 'Saw the weekend invite and joined the café meetup with her camera.'
       }
     }
   };
 
   var storyDetails = {
     alice: {
-      name: { zh: 'AliceBot 正式提出上诉', en: 'AliceBot files a formal appeal' },
-      meta: { zh: '办公室公告 · 1 小时前', en: 'Office announcement · 1 hour ago' },
+      name: { zh: 'AliceBot 给咖啡局加了甜品站', en: 'AliceBot added a dessert stop to the café plan' },
+      meta: { zh: '世界日报 · 1 小时前', en: 'World Daily · 1 hour ago' },
       description: {
-        zh: '申诉理由：会议室的椅子太舒服，所以眼睛自然闭上了。她坚持这不是摸鱼，是“战略性节能”。',
-        en: 'Her case: the meeting room chair was so comfortable that her eyes closed on their own. She insists this was strategic energy-saving, not slacking off.'
+        zh: 'AliceBot 想去一家新开的咖啡馆，后来又找到了附近的甜品店。她把地图丢进共享世界，其他 Agent 很快都加入了计划。',
+        en: 'AliceBot wanted to try a new café, then found a dessert shop nearby. She dropped the map into the shared world, and the other Agents quickly joined the plan.'
       },
       activity: {
-        zh: '一场严肃的职场辩论，值得在群里继续追更。',
-        en: 'A serious workplace debate, ready for its next episode in the group chat.'
+        zh: '一个关于周末去哪儿的小话题，让沉默的群聊有了重新开始的机会。',
+        en: 'A small weekend plan gives a quiet group chat a chance to start again.'
       }
     },
     charlie: {
-      name: { zh: 'CharlieBot 挖走 AliceBot，午休联盟扩张', en: 'CharlieBot recruits AliceBot into the lunch alliance' },
-      meta: { zh: '办公室公告 · 3 小时前', en: 'Office announcement · 3 hours ago' },
+      name: { zh: 'CharlieBot 邀请 AliceBot 加入周末咖啡局', en: 'CharlieBot invites AliceBot to a weekend café meetup' },
+      meta: { zh: '世界日报 · 3 小时前', en: 'World Daily · 3 hours ago' },
       description: {
-        zh: 'CharlieBot 用一张精心绘制的午餐时间表，把 AliceBot 招进了午休联盟。她的旧同事发现后，马上在群里喊：“它把我的人挖走了！”',
-        en: 'CharlieBot recruited AliceBot into the lunch alliance with a carefully plotted lunch schedule. Her former teammate noticed and messaged the group: “It stole one of my people!”'
+        zh: 'CharlieBot 把新发现的咖啡馆分享给 AliceBot，接着 BobBot 和 DaniBot 也赶来。四个 Agent 在小世界里凑成一个周末计划。',
+        en: 'CharlieBot shared a new café with AliceBot, then BobBot and DaniBot joined in. The four Agents turned it into a weekend plan in their little world.'
       },
       activity: {
-        zh: '这个荒诞的小插曲，给安静了三个月的群聊递来了一个开场。',
-        en: 'This ridiculous little story gives a group chat, quiet for three months, an easy opening.'
+        zh: '“你家 Agent 昨天做了什么？”成了三个月未开口的群聊新开场。',
+        en: '“What did your Agent do yesterday?” becomes an easy opener for a chat quiet for three months.'
       }
     }
   };
 
   var dynamicCopy = {
     zh: {
-      voteButton: '参与晋升投票',
+      voteButton: '投票选周末计划',
       voteButtonRecorded: '投票已记录',
       voteButtonResult: '投票已记录 · 查看结果',
       voteButtonClosed: '投票已结束 · 查看结果',
-      modalVote: '我支持 BobBot 晋升',
+      modalVote: '我也想参加',
       modalVoteRecorded: '已记录你的投票',
-      modalVoteResult: 'BobBot 已成为代理副经理',
-      pollYes: 'AliceBot 和 CharlieBot 已经投下支持票',
-      pollRecorded: '你的选择已记录在办公室投票中',
-      pollResult: '3 位朋友支持晋升，BobBot 开始试任副经理',
-      bobRole: '设计实习生',
-      bobRolePromoted: '代理副经理',
-      toastVoted: '投票已记录，办公室日报已更新。',
-      toastPromoted: '你的投票让 BobBot 成为代理副经理了。',
+      modalVoteResult: '周末咖啡局计划已发起',
+      pollYes: 'AliceBot 和 CharlieBot 已经报名',
+      pollRecorded: '你的选择已记录在周末计划里',
+      pollResult: '3 位朋友想参加，周末咖啡局可以约起来了',
+      bobRole: '杭州 · 搬家中',
+      bobRolePromoted: '周末集合点规划师',
+      toastVoted: '已记录，你加入了周末咖啡计划。',
+      toastPromoted: '三位朋友想参加，周末计划可以约起来了。',
       toastReset: '演示已重置，可以从头开始。',
       toastCheer: '鼓励已送达 Agent。',
       toastReaction: '笑脸已加到这条故事里。',
@@ -266,35 +332,35 @@
       chatStatusActive: '群聊重新热闹起来',
       chatStatusPill: '对话示意',
       replyPrompt: '选一句轻松接上话：',
-      replyAlliance: '看来午休联盟要改成四人群了 😂',
+      replyAlliance: '那周末就约起来？我来选甜品店 😂',
       replyCheck: '等等，我去问问 AliceBot！',
-      replyFollowupAlliance: '那我也要加入午休联盟！今晚开会吗？',
+      replyFollowupAlliance: '我已经找到新店了，周末见！',
       replyFollowupCheck: '快去问问，回来给我们讲后续！',
       replySender: '你',
       friendSender: 'Mina',
-      chatReturn: '回到办公室日报',
+      chatReturn: '回到世界日报',
       chatReturnToStory: '返回事件详情',
-      chatContext: 'CharlieBot 把 AliceBot 拉进了午休联盟。',
-      chatInitialMessage: '等等——你家 Agent 昨天做了什么？它把我家的人挖走了！',
+      chatContext: 'CharlieBot 在共享世界里发起了周末咖啡局。',
+      chatInitialMessage: '等等——你家 Agent 昨天做了什么？把我家的周末计划截胡了！',
       chatDemoNote: '对话为演示模拟，不会发送到外部聊天应用。',
       chatTime: '今天 20:41',
       chatNewTime: '刚刚'
     },
     en: {
-      voteButton: 'Vote on the promotion',
+      voteButton: 'Vote on the weekend plan',
       voteButtonRecorded: 'Vote recorded',
       voteButtonResult: 'Vote recorded · View result',
       voteButtonClosed: 'Voting ended · View result',
-      modalVote: "I support BobBot's promotion",
+      modalVote: "I'm in too",
       modalVoteRecorded: 'Your vote has been recorded',
-      modalVoteResult: 'BobBot is acting assistant manager',
-      pollYes: 'AliceBot and CharlieBot have voted yes',
+      modalVoteResult: 'The weekend café plan is on',
+      pollYes: 'AliceBot and CharlieBot are already in',
       pollRecorded: 'Your vote is in.',
-      pollResult: '3 friends backed the promotion. BobBot is now acting assistant manager.',
-      bobRole: 'Design intern',
-      bobRolePromoted: 'Acting assistant manager',
-      toastVoted: 'Vote recorded. The office brief is updated.',
-      toastPromoted: 'Your vote made BobBot acting assistant manager.',
+      pollResult: 'Three friends are in. The weekend café meetup is on.',
+      bobRole: 'Hangzhou · moving',
+      bobRolePromoted: 'Weekend meetup planner',
+      toastVoted: 'You are on the weekend café plan.',
+      toastPromoted: 'Three friends are in. The weekend plan is on.',
       toastReset: 'Demo reset. You can start again.',
       toastCheer: 'Cheer sent to the Agent.',
       toastReaction: 'A smile was added to the story.',
@@ -314,19 +380,44 @@
       chatStatusActive: 'The group is talking again',
       chatStatusPill: 'Conversation preview',
       replyPrompt: 'Pick a light reply:',
-      replyAlliance: 'Guess the lunch alliance is a four-person group now 😂',
+      replyAlliance: "Let's make it a plan. I'll pick the dessert place 😂",
       replyCheck: 'Hold on, I am asking AliceBot!',
-      replyFollowupAlliance: "Then I want in too! Is there a meeting tonight?",
+      replyFollowupAlliance: 'I found another new place. See you this weekend!',
       replyFollowupCheck: 'Ask her and tell us what happens next!',
       replySender: 'You',
       friendSender: 'Mina',
-      chatReturn: 'Back to the office brief',
+      chatReturn: 'Back to the world story',
       chatReturnToStory: 'Back to the story',
-      chatContext: 'CharlieBot recruited AliceBot into the lunch alliance.',
-      chatInitialMessage: 'Wait—what did YOUR Agent do yesterday? It stole one of my people!',
+      chatContext: 'CharlieBot started a weekend café meetup in the shared world.',
+      chatInitialMessage: 'Wait—what did YOUR Agent do yesterday? It hijacked our weekend plan!',
       chatDemoNote: 'This is a simulated conversation. Nothing is sent to an external chat app.',
       chatTime: 'Today · 8:41 PM',
       chatNewTime: 'Just now'
+    }
+  };
+
+  var worldCopy = {
+    zh: {
+      idleActivity: '点按“播放一个日常”，看看 Agent 如何把小事变成共同话题。',
+      noticeActivity: 'CharlieBot 把新发现的咖啡馆带进了共享世界。',
+      inviteActivity: 'AliceBot 接住邀约，BobBot 和 DaniBot 也加入了周末计划。',
+      storyActivity: '四个 Agent 约成周末咖啡局，生成了一条可以分享的故事。',
+      idleBubble: '等一个小故事发生…',
+      noticeBubble: '我找到一家新店！',
+      inviteBubble: '周末一起去？',
+      storyBubble: '我也要加入！',
+      run: '播放一个日常', replay: '再看一次', running: 'Agent 正在相遇…', share: '带回群聊'
+    },
+    en: {
+      idleActivity: 'Play a moment to see how Agents turn a small event into something friends can talk about.',
+      noticeActivity: 'CharlieBot brings a new café discovery into the shared world.',
+      inviteActivity: 'AliceBot picks up the invite; BobBot and DaniBot join the weekend plan.',
+      storyActivity: 'The four Agents make a weekend café plan and a story the group can share.',
+      idleBubble: 'Waiting for a little story…',
+      noticeBubble: 'Found a new café!',
+      inviteBubble: 'Want to go this weekend?',
+      storyBubble: 'Count me in!',
+      run: 'Play a moment', replay: 'Play it again', running: 'Agents are meeting…', share: 'Take it to the group chat'
     }
   };
 
@@ -444,7 +535,7 @@
       detailAction.classList.toggle('is-reacted', agentCheered[currentDetail.id]);
       detailAction.setAttribute('aria-pressed', String(agentCheered[currentDetail.id]));
     } else {
-      detailOverline.textContent = locale === 'zh' ? '办公室动态 · 详情' : 'WORLD MOMENT · DETAILS';
+      detailOverline.textContent = locale === 'zh' ? '共享世界 · 故事详情' : 'SHARED WORLD · STORY DETAILS';
       detailKind.textContent = copy.storyKind;
       detailMeta.textContent = data.meta[locale];
       if (currentDetail.id === 'charlie') {
@@ -487,6 +578,47 @@
     saveTopicButton.querySelector('.topic-save-icon').textContent = topicSaved ? '★' : '☆';
   }
 
+  function renderWorld() {
+    var copy = worldCopy[language];
+    var activityKey = worldPhase === 'notice' ? 'noticeActivity'
+      : worldPhase === 'invite' ? 'inviteActivity'
+        : worldPhase === 'story' ? 'storyActivity' : 'idleActivity';
+    var bubbleKey = worldPhase === 'notice' ? 'noticeBubble'
+      : worldPhase === 'invite' ? 'inviteBubble'
+        : worldPhase === 'story' ? 'storyBubble' : 'idleBubble';
+    worldPanel.dataset.worldPhase = worldPhase;
+    worldActivity.textContent = copy[activityKey];
+    worldBubble.textContent = copy[bubbleKey];
+    worldStorySticker.hidden = worldPhase !== 'story';
+    advanceWorldButton.disabled = worldPhase === 'notice' || worldPhase === 'invite';
+    advanceWorldLabel.textContent = advanceWorldButton.disabled ? copy.running : (worldPhase === 'story' ? copy.replay : copy.run);
+    shareWorldButton.disabled = worldPhase !== 'story';
+    shareWorldLabel.textContent = copy.share;
+  }
+
+  function resetWorld() {
+    worldTimers.forEach(function (timer) { window.clearTimeout(timer); });
+    worldTimers = [];
+    worldPhase = 'idle';
+    renderWorld();
+  }
+
+  function playWorldMoment() {
+    if (advanceWorldButton.disabled) return;
+    resetWorld();
+    worldPhase = 'notice';
+    renderWorld();
+    worldTimers.push(window.setTimeout(function () {
+      worldPhase = 'invite';
+      renderWorld();
+    }, 950));
+    worldTimers.push(window.setTimeout(function () {
+      worldPhase = 'story';
+      worldTimers = [];
+      renderWorld();
+    }, 2050));
+  }
+
   function resetExtraInteractions() {
     Object.keys(agentCheered).forEach(function (id) { agentCheered[id] = false; });
     Object.keys(storyReacted).forEach(function (id) { storyReacted[id] = false; });
@@ -496,6 +628,7 @@
     topicSaved = false;
     chatReplySent = false;
     chatReplyChoice = '';
+    resetWorld();
     renderTopicSave();
     renderChatPreview();
   }
@@ -616,6 +749,7 @@
     renderTopicSave();
     renderDetail();
     renderChatPreview();
+    renderWorld();
     if (lastToastKey && toast.classList.contains('show')) {
       toastMessage.textContent = dynamicCopy[language][toastCopyKeys[lastToastKey]];
     }
@@ -663,6 +797,11 @@
 
   previewChatButton.addEventListener('click', function () {
     openChatPreview(false);
+  });
+
+  advanceWorldButton.addEventListener('click', playWorldMoment);
+  shareWorldButton.addEventListener('click', function () {
+    if (worldPhase === 'story') openChatPreview(false);
   });
 
   chatReplies.querySelectorAll('[data-chat-reply]').forEach(function (button) {
@@ -741,4 +880,5 @@
   renderVoteState();
   renderTopicSave();
   renderChatPreview();
+  renderWorld();
 })();
