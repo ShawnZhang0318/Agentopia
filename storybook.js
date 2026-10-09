@@ -20,6 +20,8 @@
   const pixelWorldRun = document.getElementById('storybook-world-run');
   const pixelWorldOpenStory = document.getElementById('storybook-world-open-story');
   const pixelWorldAgents = Array.from(document.querySelectorAll('[data-world-agent]'));
+  const pixelWorldSceneButtons = Array.from(document.querySelectorAll('[data-story-scene]'));
+  const pixelWorldSceneSwitcher = document.querySelector('.world-card-top .world-scene-switch');
   const conversationThread = document.getElementById('conversation-thread');
   const groupActivity = document.getElementById('group-activity');
   const onlineLabel = document.querySelector('#online-indicator span');
@@ -38,15 +40,25 @@
   let animating = false;
   let animationTimer;
   let pixelWorldPhase = 'idle';
+  let pixelWorldScene = 'map';
   let pixelWorldTimers = [];
   let agentInspectTimer;
+  let pixelWorldDialogueTimer = null;
+  let pixelWorldDialogueStep = 0;
+
+  const pixelWorldDialogue = [
+    { speaker: 'alice', listener: 'bob', face: '😊', en: 'I found a café with the coziest window seats.', zh: '我发现一家窗边位置超舒服的咖啡馆。' },
+    { speaker: 'bob', listener: 'alice', face: '🙂', en: 'Perfect. I will find a place between our cities.', zh: '好呀，我来找一个大家都方便的集合点。' },
+    { speaker: 'charlie', listener: 'dani', face: '😋', en: 'Wait—does this place have cake?', zh: '等等——这家店有蛋糕吗？' },
+    { speaker: 'dani', listener: 'charlie', face: '😄', en: 'Obviously. I am already saving it to the plan.', zh: '当然有。我已经把它加进计划啦。' }
+  ];
 
   const pixelWorldCopy = {
     en: {
       idleStatus: 'Click an Agent, or let the world play out.',
       noticeStatus: 'CharlieBot brings a new café find into the world.',
       inviteStatus: 'AliceBot, BobBot, and DaniBot pick up the invite.',
-      storyStatus: 'Four Agents turn a small moment into a story to share.',
+      storyStatus: 'Four Agents take a seat and turn a small moment into a story to share.',
       idleBubble: 'A tiny world, shared by four friends.',
       noticeBubble: 'Found a new café!',
       inviteBubble: 'Want to go this weekend?',
@@ -66,7 +78,7 @@
       idleStatus: '点一点 Agent，或让小世界继续运转。',
       noticeStatus: 'CharlieBot 把新发现的咖啡馆带进了小世界。',
       inviteStatus: 'AliceBot、BobBot 和 DaniBot 接住邀约，加入计划。',
-      storyStatus: '四个 Agent 把一个小瞬间变成了可分享的故事。',
+      storyStatus: '四个 Agent 坐到桌边，把一个小瞬间聊成了可分享的故事。',
       idleBubble: '四个朋友，共享一个小世界。',
       noticeBubble: '我找到一家新咖啡馆！',
       inviteBubble: '周末一起去？',
@@ -136,7 +148,17 @@
     pixelWorldTimers.forEach((timer) => window.clearTimeout(timer));
     pixelWorldTimers = [];
     window.clearTimeout(agentInspectTimer);
-    pixelWorldAgents.forEach((agent) => agent.classList.remove('is-inspected'));
+    window.clearInterval(pixelWorldDialogueTimer);
+    pixelWorldDialogueTimer = null;
+    pixelWorldDialogueStep = 0;
+    pixelWorldAgents.forEach((agent) => {
+      agent.classList.remove('is-inspected', 'is-listening');
+      agent.dataset.speaking = 'false';
+      agent.querySelector('.agent-emotion').textContent = '';
+      const speech = agent.querySelector('.agent-speech');
+      speech.hidden = true;
+      speech.textContent = '';
+    });
     pixelWorld.removeAttribute('data-world-selected');
   }
 
@@ -149,6 +171,13 @@
       : pixelWorldPhase === 'invite' ? 'inviteBubble'
         : pixelWorldPhase === 'story' ? 'storyBubble' : 'idleBubble';
     pixelWorld.dataset.worldPhase = pixelWorldPhase;
+    if (pixelWorldPhase === 'notice') pixelWorldScene = 'map';
+    if (pixelWorldPhase === 'invite') pixelWorldScene = 'map';
+    if (pixelWorldPhase === 'story') pixelWorldScene = 'cafe';
+    pixelWorld.dataset.worldScene = pixelWorldScene;
+    pixelWorldSceneButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.storyScene === pixelWorldScene));
+    });
     pixelWorldStatus.textContent = copy[statusKey];
     pixelWorldBubble.textContent = copy[bubbleKey];
     pixelWorldEventCopy.textContent = copy.event;
@@ -156,11 +185,47 @@
     pixelWorldRun.disabled = pixelWorldPhase === 'notice' || pixelWorldPhase === 'invite';
     pixelWorldRun.textContent = pixelWorldRun.disabled ? copy.running : (pixelWorldPhase === 'story' ? copy.replay : copy.run);
     pixelWorldOpenStory.hidden = pixelWorldPhase !== 'story';
+    renderPixelWorldPerformance();
+  }
+
+  function renderPixelWorldPerformance() {
+    pixelWorldAgents.forEach((agent) => {
+      agent.dataset.speaking = 'false';
+      agent.classList.remove('is-listening');
+      agent.querySelector('.agent-emotion').textContent = '';
+      const speech = agent.querySelector('.agent-speech');
+      speech.hidden = true;
+      speech.textContent = '';
+    });
+    if (pixelWorldPhase === 'notice') {
+      pixelWorld.querySelector('[data-world-agent="charlie"] .agent-emotion').textContent = '✨';
+    } else if (pixelWorldPhase === 'invite') {
+      pixelWorldAgents.forEach((agent) => {
+        agent.querySelector('.agent-emotion').textContent = agent.dataset.worldAgent === 'bob' ? '🙂' : '👋';
+      });
+    } else if (pixelWorldPhase === 'story') {
+      const line = pixelWorldDialogue[pixelWorldDialogueStep % pixelWorldDialogue.length];
+      const speaker = pixelWorld.querySelector('[data-world-agent="' + line.speaker + '"]');
+      const listener = pixelWorld.querySelector('[data-world-agent="' + line.listener + '"]');
+      speaker.dataset.speaking = 'true';
+      speaker.querySelector('.agent-emotion').textContent = line.face;
+      const speech = speaker.querySelector('.agent-speech');
+      speech.textContent = language === 'en' ? line.en : line.zh;
+      speech.hidden = false;
+      listener.classList.add('is-listening');
+      listener.querySelector('.agent-emotion').textContent = '😊';
+    }
+  }
+
+  function advancePixelWorldDialogue() {
+    pixelWorldDialogueStep = (pixelWorldDialogueStep + 1) % pixelWorldDialogue.length;
+    renderPixelWorldPerformance();
   }
 
   function resetPixelWorld() {
     clearPixelWorldTimers();
     pixelWorldPhase = 'idle';
+    pixelWorldScene = 'map';
     renderPixelWorld();
   }
 
@@ -172,15 +237,17 @@
     pixelWorldTimers.push(window.setTimeout(() => {
       pixelWorldPhase = 'invite';
       renderPixelWorld();
-    }, 850));
+    }, 1100));
     pixelWorldTimers.push(window.setTimeout(() => {
       pixelWorldPhase = 'story';
-      pixelWorldTimers = [];
+      pixelWorldDialogueStep = 0;
       renderPixelWorld();
-    }, 1850));
+      pixelWorldDialogueTimer = window.setInterval(advancePixelWorldDialogue, 2300);
+    }, 2700));
   }
 
   function inspectPixelAgent(agent) {
+    const resumeStory = pixelWorldPhase === 'story';
     if (pixelWorldPhase === 'notice' || pixelWorldPhase === 'invite') resetPixelWorld();
     else clearPixelWorldTimers();
     pixelWorldAgents.forEach((item) => item.classList.toggle('is-inspected', item === agent));
@@ -188,15 +255,22 @@
     pixelWorld.dataset.worldSelected = id;
     pixelWorldStatus.textContent = pixelWorldCopy[language].selected[id];
     pixelWorldBubble.textContent = pixelWorldCopy[language].selected[id];
+    agent.dataset.speaking = 'true';
+    agent.querySelector('.agent-emotion').textContent = '💬';
+    const speech = agent.querySelector('.agent-speech');
+    speech.textContent = pixelWorldCopy[language].selected[id];
+    speech.hidden = false;
     agentInspectTimer = window.setTimeout(() => {
       pixelWorldAgents.forEach((item) => item.classList.remove('is-inspected'));
       pixelWorld.removeAttribute('data-world-selected');
       renderPixelWorld();
+      if (resumeStory) pixelWorldDialogueTimer = window.setInterval(advancePixelWorldDialogue, 2300);
     }, 2200);
   }
 
   function applyLanguage() {
     document.documentElement.lang = language === 'en' ? 'en' : 'zh-CN';
+    pixelWorldSceneSwitcher.setAttribute('aria-label', language === 'en' ? 'Switch world scene' : '切换世界场景');
     document.querySelectorAll('[data-en][data-zh]').forEach((element) => {
       element.textContent = language === 'en' ? element.dataset.en : element.dataset.zh;
     });
@@ -219,6 +293,7 @@
       fullscreenButton.title = copy.fullscreen;
     }
     updateNavigationText();
+    renderPixelWorld();
   }
 
   function updateNavigationText() {
@@ -354,6 +429,13 @@
   });
   document.getElementById('report-continue').addEventListener('click', () => goToPage(4));
   pixelWorldRun.addEventListener('click', playPixelWorldMoment);
+  pixelWorldSceneButtons.forEach((button) => button.addEventListener('click', () => {
+    pixelWorldScene = button.dataset.storyScene;
+    pixelWorld.dataset.worldScene = pixelWorldScene;
+    pixelWorldSceneButtons.forEach((sceneButton) => {
+      sceneButton.setAttribute('aria-pressed', String(sceneButton === button));
+    });
+  }));
   pixelWorldOpenStory.addEventListener('click', () => {
     if (storyExpansion.hidden) storyToggle.click();
     goToPage(3);

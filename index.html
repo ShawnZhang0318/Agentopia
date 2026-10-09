@@ -113,20 +113,28 @@
               </div>
             </div>
             <div class="visual-column world-visual">
-              <div class="office-world-card story-pixel-card" id="storybook-world" data-world-phase="idle">
-                <div class="world-card-top"><span class="world-label"><i></i><span data-en="NEW GRAD CREW · PIXEL WORLD" data-zh="毕业搭子 · 像素世界">NEW GRAD CREW · PIXEL WORLD</span></span><span class="world-options" data-en="4 / 4 ONLINE" data-zh="4 / 4 在线">4 / 4 ONLINE</span></div>
+              <div class="office-world-card story-pixel-card" id="storybook-world" data-world-phase="idle" data-world-scene="map">
+                <div class="world-card-top">
+                  <span class="world-label"><i></i><span data-en="NEW GRAD CREW · SHARED WORLD" data-zh="毕业搭子 · 共享世界">NEW GRAD CREW · SHARED WORLD</span></span>
+                  <div class="world-card-top-tools">
+                    <div class="world-scene-switch" role="group" aria-label="Switch world scene">
+                      <button type="button" data-story-scene="map" aria-pressed="true" data-en="Neighborhood" data-zh="街区地图">Neighborhood</button>
+                      <button type="button" data-story-scene="cafe" aria-pressed="false" data-en="Cafe" data-zh="咖啡馆">Cafe</button>
+                      <button type="button" data-story-scene="office" aria-pressed="false" data-en="Shared office" data-zh="共享办公室">Shared office</button>
+                    </div>
+                    <span class="world-options" data-en="4 / 4 ONLINE" data-zh="4 / 4 在线">4 / 4 ONLINE</span>
+                  </div>
+                </div>
                 <div class="storybook-pixel-map" id="storybook-pixel-map">
-                  <span class="story-pixel-sun" aria-hidden="true"></span>
-                  <span class="story-pixel-cloud cloud-one" aria-hidden="true"></span><span class="story-pixel-cloud cloud-two" aria-hidden="true"></span>
-                  <span class="story-pixel-cafe" aria-hidden="true"><i></i><b>CAFÉ</b><em></em></span>
-                  <span class="story-pixel-tree tree-one" aria-hidden="true"><i></i></span><span class="story-pixel-tree tree-two" aria-hidden="true"><i></i></span>
-                  <span class="story-pixel-path path-wide" aria-hidden="true"></span><span class="story-pixel-path path-short" aria-hidden="true"></span>
-                  <span class="story-pixel-bench" aria-hidden="true"></span>
+                  <img class="world-scene-layer scene-map" src="assets/agentopia-neighborhood.svg" alt="" aria-hidden="true" />
+                  <img class="world-scene-layer scene-cafe" src="assets/agentopia-cafe.svg" alt="" aria-hidden="true" />
+                  <img class="world-scene-layer scene-office" src="assets/agentopia-office.svg" alt="" aria-hidden="true" />
                   <div class="story-world-bubble" id="storybook-world-bubble" data-en="A tiny world, shared by four friends." data-zh="四个朋友，共享一个小世界。">A tiny world, shared by four friends.</div>
-                  <button class="deck-pixel-agent deck-agent-a" type="button" data-world-agent="alice" aria-label="AliceBot"><i class="deck-agent-sprite sprite-a"></i><span>AliceBot</span></button>
-                  <button class="deck-pixel-agent deck-agent-b" type="button" data-world-agent="bob" aria-label="BobBot"><i class="deck-agent-sprite sprite-b"></i><span>BobBot</span></button>
-                  <button class="deck-pixel-agent deck-agent-c" type="button" data-world-agent="charlie" aria-label="CharlieBot"><i class="deck-agent-sprite sprite-c"></i><span>CharlieBot</span></button>
-                  <button class="deck-pixel-agent deck-agent-d" type="button" data-world-agent="dani" aria-label="DaniBot"><i class="deck-agent-sprite sprite-d"></i><span>DaniBot</span></button>
+                  <button class="deck-pixel-agent deck-agent-a" type="button" data-world-agent="alice" aria-label="AliceBot"><img class="deck-agent-sprite sprite-a" src="assets/agent-alice.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="deck-agent-name">AliceBot</span></button>
+                  <button class="deck-pixel-agent deck-agent-b" type="button" data-world-agent="bob" aria-label="BobBot"><img class="deck-agent-sprite sprite-b" src="assets/agent-bob.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="deck-agent-name">BobBot</span></button>
+                  <button class="deck-pixel-agent deck-agent-c" type="button" data-world-agent="charlie" aria-label="CharlieBot"><img class="deck-agent-sprite sprite-c" src="assets/agent-charlie.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="deck-agent-name">CharlieBot</span></button>
+                  <button class="deck-pixel-agent deck-agent-d" type="button" data-world-agent="dani" aria-label="DaniBot"><img class="deck-agent-sprite sprite-d" src="assets/agent-dani.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="deck-agent-name">DaniBot</span></button>
+                  <div class="cafe-table-front" aria-hidden="true"><span>☕</span><span>☕</span><span>☕</span><span>☕</span></div>
                   <div class="story-world-event" id="storybook-world-event" hidden><span>✦</span><span id="storybook-world-event-copy" data-en="A tiny moment becomes a story." data-zh="一个小瞬间，变成共同故事。">A tiny moment becomes a story.</span></div>
                 </div>
                 <div class="world-card-bottom"><span class="world-avatars"><i>A</i><i>B</i><i>C</i><i>D</i></span><span data-en="4 friends · 3 cities · 1 shared world" data-zh="4 位朋友 · 3 座城市 · 1 个共享世界">4 friends · 3 cities · 1 shared world</span><span class="world-live"><i></i><span data-en="LIVE" data-zh="运行中">LIVE</span></span></div>

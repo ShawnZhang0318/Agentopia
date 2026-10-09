@@ -52,8 +52,13 @@
   var advanceWorldLabel = document.getElementById('advance-world-label');
   var shareWorldButton = document.getElementById('share-world-story');
   var shareWorldLabel = document.getElementById('share-world-label');
+  var worldSceneButtons = Array.prototype.slice.call(document.querySelectorAll('[data-product-scene]'));
+  var worldAgents = Array.prototype.slice.call(document.querySelectorAll('#product-world [data-agent-id]'));
   var worldPhase = 'idle';
+  var worldScene = 'map';
   var worldTimers = [];
+  var worldDialogueTimer = null;
+  var worldDialogueStep = 0;
   var currentDetail = null;
   var detailTriggerElement = null;
   var chatTriggerElement = null;
@@ -87,6 +92,10 @@
     '办公室今日动态': "Today's office activity",
     '办公室成员与讨论': 'Office members and conversation',
     '共享像素世界': 'Shared pixel world',
+    '街区地图': 'Neighborhood',
+    '咖啡馆': 'Cafe',
+    '共享办公室': 'Shared office',
+    '切换世界场景': 'Switch world scene',
     '可互动的 Agent 像素世界': 'Interactive Agent pixel world',
     '共享世界': 'Shared world',
     'Agent 成员与讨论': 'Agents and conversation',
@@ -401,7 +410,7 @@
       idleActivity: '点按“播放一个日常”，看看 Agent 如何把小事变成共同话题。',
       noticeActivity: 'CharlieBot 把新发现的咖啡馆带进了共享世界。',
       inviteActivity: 'AliceBot 接住邀约，BobBot 和 DaniBot 也加入了周末计划。',
-      storyActivity: '四个 Agent 约成周末咖啡局，生成了一条可以分享的故事。',
+      storyActivity: '四个 Agent 坐到咖啡馆桌边，约成周末咖啡局，生成一条可以分享的故事。',
       idleBubble: '等一个小故事发生…',
       noticeBubble: '我找到一家新店！',
       inviteBubble: '周末一起去？',
@@ -412,7 +421,7 @@
       idleActivity: 'Play a moment to see how Agents turn a small event into something friends can talk about.',
       noticeActivity: 'CharlieBot brings a new café discovery into the shared world.',
       inviteActivity: 'AliceBot picks up the invite; BobBot and DaniBot join the weekend plan.',
-      storyActivity: 'The four Agents make a weekend café plan and a story the group can share.',
+      storyActivity: 'The four Agents take a seat, make a weekend café plan, and create a story the group can share.',
       idleBubble: 'Waiting for a little story…',
       noticeBubble: 'Found a new café!',
       inviteBubble: 'Want to go this weekend?',
@@ -420,6 +429,13 @@
       run: 'Play a moment', replay: 'Play it again', running: 'Agents are meeting…', share: 'Take it to the group chat'
     }
   };
+
+  var worldDialogue = [
+    { speaker: 'alice', listener: 'bob', face: '😊', en: 'I found a café with the coziest window seats.', zh: '我发现一家窗边位置超舒服的咖啡馆。' },
+    { speaker: 'bob', listener: 'alice', face: '🙂', en: 'Perfect. I will find a place between our cities.', zh: '好呀，我来找一个大家都方便的集合点。' },
+    { speaker: 'charlie', listener: 'dani', face: '😋', en: 'Wait—does this place have cake?', zh: '等等——这家店有蛋糕吗？' },
+    { speaker: 'dani', listener: 'charlie', face: '😄', en: 'Obviously. I am already saving it to the plan.', zh: '当然有。我已经把它加进计划啦。' }
+  ];
 
   var textNodes = [];
   var textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -587,6 +603,13 @@
       : worldPhase === 'invite' ? 'inviteBubble'
         : worldPhase === 'story' ? 'storyBubble' : 'idleBubble';
     worldPanel.dataset.worldPhase = worldPhase;
+    if (worldPhase === 'notice') worldScene = 'map';
+    if (worldPhase === 'invite') worldScene = 'map';
+    if (worldPhase === 'story') worldScene = 'cafe';
+    worldPanel.dataset.worldScene = worldScene;
+    worldSceneButtons.forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.productScene === worldScene));
+    });
     worldActivity.textContent = copy[activityKey];
     worldBubble.textContent = copy[bubbleKey];
     worldStorySticker.hidden = worldPhase !== 'story';
@@ -594,12 +617,52 @@
     advanceWorldLabel.textContent = advanceWorldButton.disabled ? copy.running : (worldPhase === 'story' ? copy.replay : copy.run);
     shareWorldButton.disabled = worldPhase !== 'story';
     shareWorldLabel.textContent = copy.share;
+    renderWorldPerformance();
+  }
+
+  function renderWorldPerformance() {
+    worldAgents.forEach(function (agent) {
+      agent.dataset.speaking = 'false';
+      agent.classList.remove('is-listening');
+      agent.querySelector('.agent-emotion').textContent = '';
+      var speech = agent.querySelector('.agent-speech');
+      speech.hidden = true;
+      speech.textContent = '';
+    });
+    if (worldPhase === 'notice') {
+      var charlie = worldPanel.querySelector('[data-agent-id="charlie"]');
+      charlie.querySelector('.agent-emotion').textContent = '✨';
+    } else if (worldPhase === 'invite') {
+      worldAgents.forEach(function (agent) {
+        agent.querySelector('.agent-emotion').textContent = agent.dataset.agentId === 'bob' ? '🙂' : '👋';
+      });
+    } else if (worldPhase === 'story') {
+      var line = worldDialogue[worldDialogueStep % worldDialogue.length];
+      var speaker = worldPanel.querySelector('[data-agent-id="' + line.speaker + '"]');
+      var listener = worldPanel.querySelector('[data-agent-id="' + line.listener + '"]');
+      speaker.dataset.speaking = 'true';
+      speaker.querySelector('.agent-emotion').textContent = line.face;
+      var speech = speaker.querySelector('.agent-speech');
+      speech.textContent = language === 'en' ? line.en : line.zh;
+      speech.hidden = false;
+      listener.classList.add('is-listening');
+      listener.querySelector('.agent-emotion').textContent = '😊';
+    }
+  }
+
+  function advanceWorldDialogue() {
+    worldDialogueStep = (worldDialogueStep + 1) % worldDialogue.length;
+    renderWorldPerformance();
   }
 
   function resetWorld() {
     worldTimers.forEach(function (timer) { window.clearTimeout(timer); });
     worldTimers = [];
+    window.clearInterval(worldDialogueTimer);
+    worldDialogueTimer = null;
+    worldDialogueStep = 0;
     worldPhase = 'idle';
+    worldScene = 'map';
     renderWorld();
   }
 
@@ -611,12 +674,13 @@
     worldTimers.push(window.setTimeout(function () {
       worldPhase = 'invite';
       renderWorld();
-    }, 950));
+    }, 1100));
     worldTimers.push(window.setTimeout(function () {
       worldPhase = 'story';
-      worldTimers = [];
+      worldDialogueStep = 0;
       renderWorld();
-    }, 2050));
+      worldDialogueTimer = window.setInterval(advanceWorldDialogue, 2300);
+    }, 2700));
   }
 
   function resetExtraInteractions() {
@@ -753,6 +817,16 @@
     if (lastToastKey && toast.classList.contains('show')) {
       toastMessage.textContent = dynamicCopy[language][toastCopyKeys[lastToastKey]];
     }
+  });
+
+  worldSceneButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      worldScene = button.dataset.productScene;
+      worldPanel.dataset.worldScene = worldScene;
+      worldSceneButtons.forEach(function (sceneButton) {
+        sceneButton.setAttribute('aria-pressed', String(sceneButton === button));
+      });
+    });
   });
 
   document.querySelectorAll('[data-open-vote]').forEach(function (button) {

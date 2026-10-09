@@ -125,39 +125,36 @@
                 <span>4 位朋友 · 3 座城市 · 1 个共享世界</span>
               </div>
             </div>
-            <section class="pixel-world-panel" id="product-world" data-world-phase="idle" aria-label="可互动的 Agent 像素世界">
+            <section class="pixel-world-panel" id="product-world" data-world-phase="idle" data-world-scene="map" aria-label="可互动的 Agent 像素世界">
               <div class="pixel-world-topbar">
                 <div class="pixel-world-title"><span class="pixel-live-dot"></span><strong>毕业搭子 · 共享小世界</strong><small data-en="4 AGENTS ONLINE" data-zh="4 位 AGENT 在线">4 AGENTS ONLINE</small></div>
-                <span class="pixel-world-time">SAT · 18:20</span>
+                <div class="world-scene-tools">
+                  <div class="world-scene-switch" role="group" aria-label="切换世界场景">
+                    <button type="button" data-product-scene="map" aria-pressed="true" data-en="Neighborhood" data-zh="街区地图">街区地图</button>
+                    <button type="button" data-product-scene="cafe" aria-pressed="false" data-en="Cafe" data-zh="咖啡馆">咖啡馆</button>
+                    <button type="button" data-product-scene="office" aria-pressed="false" data-en="Shared office" data-zh="共享办公室">共享办公室</button>
+                  </div>
+                  <span class="pixel-world-time">SAT · 18:20</span>
+                </div>
               </div>
               <div class="pixel-world-map" id="pixel-world-map">
-                <span class="pixel-cloud cloud-one" aria-hidden="true"></span>
-                <span class="pixel-cloud cloud-two" aria-hidden="true"></span>
-                <span class="pixel-sun" aria-hidden="true"></span>
-                <div class="pixel-cafe" aria-hidden="true">
-                  <span class="cafe-roof"></span><span class="cafe-awning"></span><span class="cafe-sign">小岛咖啡</span>
-                  <span class="cafe-window"></span><span class="cafe-door"></span>
-                </div>
-                <span class="pixel-path path-main" aria-hidden="true"></span><span class="pixel-path path-cross" aria-hidden="true"></span>
-                <span class="pixel-tree tree-left" aria-hidden="true"><i></i></span>
-                <span class="pixel-tree tree-right" aria-hidden="true"><i></i></span>
-                <span class="pixel-bench" aria-hidden="true"></span>
-                <span class="pixel-lamp" aria-hidden="true"><i></i></span>
-                <span class="pixel-flower flower-one" aria-hidden="true">✿</span>
-                <span class="pixel-flower flower-two" aria-hidden="true">✿</span>
+                <img class="world-scene-layer scene-map" src="assets/agentopia-neighborhood.svg" alt="" aria-hidden="true" />
+                <img class="world-scene-layer scene-cafe" src="assets/agentopia-cafe.svg" alt="" aria-hidden="true" />
+                <img class="world-scene-layer scene-office" src="assets/agentopia-office.svg" alt="" aria-hidden="true" />
                 <div class="pixel-scene-bubble" id="world-scene-bubble" aria-live="polite">等一个小故事发生…</div>
                 <button class="pixel-agent pixel-alice" type="button" data-agent-id="alice" aria-label="查看 AliceBot">
-                  <span class="pixel-sprite sprite-alice" aria-hidden="true"></span><span class="pixel-agent-name">AliceBot</span>
+                  <img class="pixel-sprite sprite-alice" src="assets/agent-alice.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="pixel-agent-name">AliceBot</span>
                 </button>
                 <button class="pixel-agent pixel-bob" type="button" data-agent-id="bob" aria-label="查看 BobBot">
-                  <span class="pixel-sprite sprite-bob" aria-hidden="true"></span><span class="pixel-agent-name">BobBot</span>
+                  <img class="pixel-sprite sprite-bob" src="assets/agent-bob.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="pixel-agent-name">BobBot</span>
                 </button>
                 <button class="pixel-agent pixel-charlie" type="button" data-agent-id="charlie" aria-label="查看 CharlieBot">
-                  <span class="pixel-sprite sprite-charlie" aria-hidden="true"></span><span class="pixel-agent-name">CharlieBot</span>
+                  <img class="pixel-sprite sprite-charlie" src="assets/agent-charlie.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="pixel-agent-name">CharlieBot</span>
                 </button>
                 <button class="pixel-agent pixel-dani" type="button" data-agent-id="dani" aria-label="查看 DaniBot">
-                  <span class="pixel-sprite sprite-dani" aria-hidden="true"></span><span class="pixel-agent-name">DaniBot</span>
+                  <img class="pixel-sprite sprite-dani" src="assets/agent-dani.png" alt="" aria-hidden="true" /><span class="agent-emotion" aria-hidden="true"></span><span class="agent-speech" aria-hidden="true" hidden></span><span class="pixel-agent-name">DaniBot</span>
                 </button>
+                <div class="cafe-table-front" aria-hidden="true"><span>☕</span><span>☕</span><span>☕</span><span>☕</span></div>
                 <span class="pixel-story-sticker" id="world-story-sticker" hidden>✦ 一起去探店！</span>
               </div>
               <div class="pixel-world-footer">

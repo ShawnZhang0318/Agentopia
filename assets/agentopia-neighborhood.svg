@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-label="Pixel-art neighborhood plaza at sunset">
+  <defs>
+    <pattern id="pavers" width="96" height="60" patternUnits="userSpaceOnUse" patternTransform="skewY(-5)">
+      <path d="M0 0H96M0 30H96M48 0V30M0 30V60M96 30V60" fill="none" stroke="#bfa777" stroke-width="3" opacity=".48"/>
+    </pattern>
+    <pattern id="brick" width="56" height="32" patternUnits="userSpaceOnUse">
+      <path d="M0 0H56M0 16H56M28 0V16M0 16V32M56 16V32" fill="none" stroke="#b9836d" stroke-width="3" opacity=".55"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="600" fill="#e9c7a3"/>
+  <rect width="1200" height="270" fill="#e8c5a0"/>
+  <rect x="940" y="48" width="102" height="102" fill="#edcf83"/>
+  <rect x="956" y="64" width="70" height="70" fill="#f4dfa2"/>
+  <path d="M0 207 122 158H245V270H0M252 186 353 137H476V270H252M846 194l92-53h156v129H846M1070 176l72-39h58v133h-130" fill="#cfaa91"/>
+  <path d="M0 223h1200v52H0" fill="#9eae8a"/>
+  <path d="M0 267h1200v333H0" fill="#a6bd8c"/>
+  <path d="M0 313h1200v287H0" fill="#adc294"/>
+  <path d="M0 398h1200v202H0" fill="#d8c08e"/>
+  <path d="M0 416h1200v184H0" fill="#e7d5a8"/>
+  <path d="M0 416h1200v184H0" fill="url(#pavers)"/>
+  <path d="M0 402h1200v16H0" fill="#c7ad7b"/>
+  <!-- cafe -->
+  <rect x="105" y="184" width="310" height="209" fill="#8c6756" opacity=".23"/>
+  <path d="M82 178h354v214H82z" fill="#f0d6a6" stroke="#98765d" stroke-width="8"/>
+  <path d="M64 177 103 126h313l48 51z" fill="#b96e59" stroke="#8b594b" stroke-width="8"/>
+  <path d="M91 173h336v37H91z" fill="#f7ead0"/>
+  <path d="M91 173h48v37H91m96-37h48v37h-48m96-37h48v37h-48m96-37h48v37h-48" fill="#cf8970"/>
+  <rect x="119" y="223" width="280" height="34" fill="#f2e4c5" stroke="#c29a70" stroke-width="5"/>
+  <text x="259" y="247" text-anchor="middle" fill="#816a54" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="4">LITTLE ISLAND</text>
+  <rect x="119" y="278" width="90" height="72" fill="#94b7ae" stroke="#fff0cf" stroke-width="10"/>
+  <path d="M164 282v64m-41-32h82" stroke="#fff0cf" stroke-width="7"/>
+  <rect x="292" y="271" width="79" height="122" fill="#806856" stroke="#f4e6c7" stroke-width="9"/>
+  <rect x="348" y="325" width="8" height="8" fill="#e9ca7f"/>
+  <rect x="80" y="392" width="360" height="16" fill="#876c56"/>
+  <rect x="97" y="406" width="327" height="9" fill="#d9b77d"/>
+  <!-- trees and planters -->
+  <rect x="520" y="289" width="25" height="137" fill="#88674d"/>
+  <path d="M464 270h31v-39h31v-27h60v26h33v40h-28v38h-101v-38z" fill="#668765"/>
+  <path d="M485 250h34v-26h38v25h40v37H485z" fill="#7fa178"/>
+  <rect x="491" y="426" width="82" height="23" fill="#9b765d"/>
+  <rect x="493" y="449" width="78" height="12" fill="#b58a67"/>
+  <path d="M560 426h21v-38h75v38h20v14H560z" fill="#ae8666"/>
+  <rect x="599" y="385" width="40" height="24" fill="#d6b18a"/>
+  <rect x="1073" y="342" width="24" height="112" fill="#88674d"/>
+  <path d="M1011 339h31v-37h38v-31h52v32h39v37h-29v34h-105v-35z" fill="#6b8d68"/>
+  <path d="M1038 328h41v-34h44v32h37v36h-122z" fill="#88a87a"/>
+  <rect x="1017" y="447" width="133" height="31" fill="#9b765d"/>
+  <rect x="1026" y="478" width="115" height="12" fill="#b58a67"/>
+  <rect x="1037" y="489" width="9" height="34" fill="#87684f"/>
+  <rect x="1122" y="489" width="9" height="34" fill="#87684f"/>
+  <!-- lamp and flower boxes -->
+  <rect x="745" y="231" width="10" height="169" fill="#63796d"/>
+  <path d="M731 231h37l-6-30h-25z" fill="#e9d191" stroke="#63796d" stroke-width="5"/>
+  <rect x="706" y="399" width="90" height="14" fill="#687c6d"/>
+  <rect x="714" y="383" width="14" height="16" fill="#d48a69"/><rect x="740" y="377" width="17" height="22" fill="#d8b967"/><rect x="769" y="385" width="16" height="14" fill="#829c72"/>
+  <path d="M865 477h74v34h-74z" fill="#bd806a"/><path d="M873 464h16v15h-16m22-22h18v22h-18m24-15h15v15h-15" fill="#78916d"/>
+  <rect width="1200" height="600" fill="url(#brick)" opacity=".08"/>
+</svg>

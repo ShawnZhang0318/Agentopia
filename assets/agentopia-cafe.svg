@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-label="Pixel-art café interior prepared for friends meeting">
+  <defs>
+    <pattern id="cafe-bricks" width="72" height="42" patternUnits="userSpaceOnUse">
+      <path d="M0 0H72M0 21H72M36 0v21M0 21v21M72 21v21" fill="none" stroke="#d3c4ad" stroke-width="2" opacity=".46"/>
+    </pattern>
+    <pattern id="cafe-floor" width="104" height="48" patternUnits="userSpaceOnUse">
+      <path d="M0 0H104M0 46H104M51 0v46" fill="none" stroke="#a77a58" stroke-width="3" opacity=".38"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="600" fill="#eadfcb"/>
+  <rect width="1200" height="348" fill="#e9dfce"/>
+  <rect width="1200" height="348" fill="url(#cafe-bricks)"/>
+  <!-- front windows, evening neighborhood outside -->
+  <rect x="68" y="61" width="350" height="225" fill="#806c5c"/>
+  <rect x="83" y="76" width="320" height="195" fill="#dcae8a"/>
+  <rect x="98" y="92" width="290" height="164" fill="#edc89d"/>
+  <rect x="101" y="189" width="287" height="67" fill="#b7c3a2"/>
+  <path d="M102 205h53v-32h47v32h47v-45h54v45h40v51H102z" fill="#99a990"/>
+  <path d="M83 174h320M244 61v225" stroke="#f8eedc" stroke-width="14"/>
+  <rect x="63" y="286" width="363" height="20" fill="#b4805f"/>
+  <rect x="80" y="303" width="329" height="11" fill="#d7b181"/>
+  <!-- wall menu -->
+  <rect x="927" y="73" width="184" height="191" fill="#745f4d"/>
+  <rect x="942" y="88" width="154" height="161" fill="#f4e9d2"/>
+  <rect x="961" y="106" width="105" height="12" fill="#80917a"/>
+  <path d="M961 139h118m-118 24h100m-100 24h112m-112 24h79" stroke="#b2916f" stroke-width="6"/>
+  <circle cx="1077" cy="112" r="8" fill="#d38b71"/>
+  <!-- hanging lamps -->
+  <path d="M546 0v65m-42 0h84m-8 0-13 40h-42l-13-40" fill="none" stroke="#7b6654" stroke-width="8"/>
+  <path d="M512 64h68l-14 36h-40z" fill="#eacb88" stroke="#7b6654" stroke-width="6"/>
+  <path d="M739 0v93m-32 0h64m-7 0-11 32h-36l-11-32" fill="none" stroke="#7b6654" stroke-width="7"/>
+  <path d="M708 92h62l-13 31h-36z" fill="#eacb88" stroke="#7b6654" stroke-width="5"/>
+  <!-- cozy wall accents -->
+  <rect x="488" y="146" width="117" height="103" fill="#c58b6b" stroke="#856b57" stroke-width="7"/>
+  <rect x="501" y="159" width="91" height="77" fill="#ead6b7"/>
+  <path d="M516 220v-39h22v-12h18v21h21v30z" fill="#82957d"/>
+  <rect x="630" y="160" width="98" height="77" fill="#d7bd8d" stroke="#92765c" stroke-width="6"/>
+  <path d="M649 218v-29h18v-14h21v43z" fill="#9aa98f"/>
+  <!-- floor -->
+  <rect y="348" width="1200" height="252" fill="#bb8f69"/>
+  <rect y="348" width="1200" height="252" fill="url(#cafe-floor)"/>
+  <path d="M130 430h940v137H130z" fill="#d5bd97" opacity=".78"/>
+  <path d="M151 446h898v103H151z" fill="#e2d2b2" opacity=".86"/>
+  <path d="M169 462h862v7H169m0 64h862v7H169" fill="#c9ad84" opacity=".66"/>
+  <!-- four chairs behind the shared table, aligned to the sitting Agents -->
+  <g fill="#8b6b50" stroke="#72563f" stroke-width="6">
+    <path d="M184 286h84v92h-84z"/><path d="M401 286h84v92h-84z"/><path d="M627 286h84v92h-84z"/><path d="M844 286h84v92h-84z"/>
+  </g>
+  <g fill="#b78d69">
+    <path d="M195 297h62v60h-62z"/><path d="M412 297h62v60h-62z"/><path d="M638 297h62v60h-62z"/><path d="M855 297h62v60h-62z"/>
+  </g>
+  <g fill="#9a7657">
+    <path d="M170 372h112v20H170zM387 372h112v20H387zM613 372h112v20H613zM830 372h112v20H830z"/>
+    <path d="M185 390h12v39h-12zm72 0h12v39h-12zm147 0h12v39h-12zm72 0h12v39h-12zm147 0h12v39h-12zm72 0h12v39h-12zm147 0h12v39h-12zm72 0h12v39h-12z"/>
+  </g>
+  <!-- potted plants at the edges keep the conversation area clear -->
+  <rect x="26" y="397" width="70" height="49" fill="#bd8267"/><path d="M61 397v-89m0 41-31-26m31 50 35-37" fill="none" stroke="#6f8d6d" stroke-width="13" stroke-linecap="square"/>
+  <rect x="1099" y="396" width="74" height="52" fill="#bd8267"/><path d="M1136 396v-94m0 45-31-24m31 50 37-37" fill="none" stroke="#6f8d6d" stroke-width="13" stroke-linecap="square"/>
+  <rect x="0" y="0" width="1200" height="600" fill="#fff4df" opacity=".035"/>
+</svg>
